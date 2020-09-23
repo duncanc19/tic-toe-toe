@@ -31,12 +31,22 @@ context Game do
     end
     describe "when row is out of bounds" do
         it "returns false" do 
-            # Arange
+            # Arrange
             game = Game.new
             # Act
             result = game.add_move(6,0)
             # Assert
-            expect(!result)
+            expect(result).to eq(false)
+        end 
+    end
+    describe "when column is out of bounds" do
+        it "returns false" do 
+            # Arrange
+            game = Game.new
+            # Act
+            result = game.add_move(0,3)
+            # Assert
+            expect(result).to eq(false)
         end 
     end
 end
