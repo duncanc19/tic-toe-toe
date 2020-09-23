@@ -1,7 +1,5 @@
 require_relative "../present"
 
-
-
 context Present do
     describe "When an empty game is passed to Present" do
         it "outputs an empty grid" do 
