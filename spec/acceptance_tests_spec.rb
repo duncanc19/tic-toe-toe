@@ -1,7 +1,7 @@
 # When: a new game starts
 # Then: display an empty grid
 describe 'a new game starts' do
-    it 'displays an empty grid' do
+    xit 'displays an empty grid' do
         # Arrange
         game = Game.new
         presenter = Present.new
