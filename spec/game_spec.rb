@@ -29,6 +29,15 @@ context Game do
             end 
         end
     end
-
+    describe "when row is out of bounds" do
+        it "returns false" do 
+            # Arange
+            game = Game.new
+            # Act
+            result = game.add_move(6,0)
+            # Assert
+            expect(!result)
+        end 
+    end
 end
 
