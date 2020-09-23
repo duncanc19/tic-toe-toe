@@ -7,6 +7,6 @@ class Game
   end
 
   def add_move(row, col)
-    @game_state = [['x','', ''],['','', ''],['','', '']]
+    @game_state[row][col] = 'x'
   end
 end
