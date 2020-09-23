@@ -49,5 +49,16 @@ context Game do
             expect(result).to eq(false)
         end 
     end
+    describe "when cell is already occupied" do
+        it "returns false" do 
+            # Arrange
+            game = Game.new
+            game.add_move(0,0)
+            # Act
+            result = game.add_move(0,0)
+            # Assert
+            expect(result).to eq(false)
+        end 
+    end
 end
 

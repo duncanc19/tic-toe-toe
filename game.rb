@@ -7,7 +7,7 @@ class Game
   end
 
   def add_move(row, col)
-    return false if row > 2
+    return false if row > 2 || col > 2
     @game_state[row][col] = 'x'
   end
 end
