@@ -49,16 +49,25 @@ context Game do
             expect(result).to eq(false)
         end 
     end
-    describe "when cell is already occupied" do
-        it "returns false" do 
+
+    cell_occupied_hash = {
+            top_left: [0,0],
+            middle_left: [0,2]
+    }
+
+    cell_occupied_hash.each do |key, value|
+        describe "when #{key} cell is already occupied" do
+          it "returns false" do
             # Arrange
             game = Game.new
-            game.add_move(0,0)
+            game.add_move(value[0], value[1])
             # Act
-            result = game.add_move(0,0)
+            result = game.add_move(value[0],value[1])
             # Assert
             expect(result).to eq(false)
-        end 
+          end
+        end
     end
+
 end
 
