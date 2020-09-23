@@ -19,5 +19,16 @@ context Game do
             expect(game.game_state).to eq([['x','', ''],['','', ''],['','', '']])
         end 
     end 
+
+    describe "When a move is added to top right" do 
+        it "adds player's symbol to top right" do
+            # Arrange
+            game = Game.new
+            # Act 
+            game.add_move(0,2)
+            # Assert
+            expect(game.game_state).to eq([['','', 'x'],['','', ''],['','', '']])
+        end 
+    end 
 end
 
