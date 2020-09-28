@@ -1,13 +1,11 @@
 class Game
 
   attr_accessor :game_state, :current_player
-  player_array = {:x=>'o', :o=> 'x'}
+  
   def initialize
     @game_state = [['','', ''],['','', ''],['','', '']]
     @current_player = "x"
   end
-
-
 
   def add_move(row, col)
     return false if row > 2 || col > 2
@@ -16,6 +14,7 @@ class Game
   end
 
   def next_player
+    player_array = {'x' => 'o', 'o' => 'x'}
     @current_player = player_array[@current_player]
   end 
 end

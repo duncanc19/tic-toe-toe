@@ -83,6 +83,15 @@ context Game do
         #Assert
         expect(game.current_player).to eq('o')
       end 
+
+      it "changes current player from 'x' to 'o' to 'x'" do
+        # Arrange
+        game = Game.new
+        game.next_player
+        game.next_player
+        #Assert
+        expect(game.current_player).to eq('x')
+      end 
     end 
 
 end
