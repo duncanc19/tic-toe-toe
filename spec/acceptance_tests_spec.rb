@@ -1,3 +1,5 @@
+require_relative "constants_test"
+
 # When: a new game starts
 # Then: display an empty grid
 describe 'a new game starts' do
@@ -9,7 +11,7 @@ describe 'a new game starts' do
         # Act
         display = presenter.present_game(game)
         # Assert
-        expect(display).to eq("---\n---\n---")
+        expect(display).to eq("#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}")
     end
 end
 
@@ -44,7 +46,7 @@ describe 'a player makes an valid move' do
         display = presenter.present_game(game)
 
         # Assert
-        expect(display).to eq("x--\n---\n---")
+        expect(display).to eq("#{TEST_PLAYER1}#{TEST_EMPTY}#{TEST_EMPTY}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}")
 
     end
 end
