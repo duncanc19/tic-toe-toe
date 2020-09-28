@@ -56,6 +56,32 @@ end
 # And: has the symbol 'o'
 
 
+describe 'the first player makes a move' do
+    # it 'the next player is asked for a move' do
+    #     # Arrange
+    #     game = Game.new
+
+    #     # Act
+    #     game.add_move(0,0)
+    #     game.next_player
+    #     game.player
+
+    #     # Assert
+    #     expect(game.player).to eq("o")
+    # end
+    xit 'has the symbol "o"' do
+        # Arrange
+        game = Game.new
+
+        # Act
+        game.add_move(0,0)
+        game.next_player
+
+        # Assert
+        expect(game.player).to eq("o")
+    end
+end
+
 # Given: A grid
 
 # When: a player makes a valid move
