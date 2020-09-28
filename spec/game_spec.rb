@@ -69,13 +69,20 @@ context Game do
         end
     end
     describe "#next_player" do
-        it "first current player is 'x'" do
-          # Arrange
-          game = Game.new
-          
+      it "first current player is 'x'" do
+        # Arrange
+        game = Game.new
         #Assert
         expect(game.current_player).to eq('x')
-        end 
+      end 
+
+      it "changes current player from 'x' to 'o'" do
+        # Arrange
+        game = Game.new
+        game.next_player
+        #Assert
+        expect(game.current_player).to eq('o')
+      end 
     end 
 
 end

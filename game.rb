@@ -4,6 +4,7 @@ class Game
   player_array = {:x=>'o', :o=> 'x'}
   def initialize
     @game_state = [['','', ''],['','', ''],['','', '']]
+    @current_player = "x"
   end
 
 
