@@ -64,5 +64,18 @@ context CheckWin do
     end
   end
 
-
+  describe "given a complete bottom row (o's)" do
+    it "returns true" do
+      # Arrange
+      game = Game.new
+      game.next_player
+      game.add_move(2,0)
+      game.add_move(2,1)
+      game.add_move(2,2)
+      # Act
+      result = CheckWin.check_rows(game) 
+      # Assert  
+      expect(result).to eq(true)  
+    end
+  end
 end 
