@@ -69,7 +69,7 @@ describe 'the first player makes a move' do
     #     # Assert
     #     expect(game.player).to eq("o")
     # end
-    xit 'has the symbol "o"' do
+    it 'has the symbol "o"' do
         # Arrange
         game = Game.new
 
@@ -78,7 +78,7 @@ describe 'the first player makes a move' do
         game.next_player
 
         # Assert
-        expect(game.player).to eq("o")
+        expect(game.current_player).to eq("o")
     end
 end
 

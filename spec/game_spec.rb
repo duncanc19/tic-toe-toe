@@ -3,7 +3,7 @@ require_relative "../game"
 context Game do
     describe "When a game is initialized" do
         it "contains an empty game_state array (3x3 of empty strings)" do 
-            # Arange
+            # Arrange
             new_game = Game.new
             # Assert
             expect(new_game.game_state).to eq([['','', ''],['','', ''],['','', '']])
@@ -68,6 +68,37 @@ context Game do
           end
         end
     end
+
+    # describe "invalid move when occupied with 'o'" do
+    #     it "returns false" do
+    #     # Arrange
+    #     game = Game.new
+    #     game.add_move(0,0)
+    #     game.next_player
+    #     puts game.game_state
+    #     game.add_move(0,1)
+    #     game.next_player
+    #     puts game.game_state
+    #     # Act
+    #     result = game.add_move(0,1)
+    #     # Assert
+    #     expect(result).to eq(false)
+    #     end
+    # end
+
+    describe "second player makes move" do
+        it "adds 'o' to game state" do
+        # Arrange
+        game = Game.new
+        game.add_move(0,0)
+        game.next_player
+        # Act
+        game.add_move(0,1)
+        # Assert
+        expect(game.game_state[0][1]).to eq('o')
+        end
+    end
+
     describe "#next_player" do
       it "first current player is 'x'" do
         # Arrange
