@@ -24,7 +24,30 @@ context Present do
             
             # Assert
             expect(display).to eq("x--\n---\n---")
+        end
+        it 'move is shown on the grid' do
+            # Arrange
+            game = Game.new
+            presenter = Present.new
     
+            # Act
+            result = game.add_move(0,2)
+            display = presenter.present_game(game)
+            
+            # Assert
+            expect(display).to eq("--x\n---\n---")
+        end
+        it 'move is shown on the grid' do
+            # Arrange
+            game = Game.new
+            presenter = Present.new
+    
+            # Act
+            result = game.add_move(0,1)
+            display = presenter.present_game(game)
+            
+            # Assert
+            expect(display).to eq("-x-\n---\n---")
         end
     end
 end
