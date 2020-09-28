@@ -1,10 +1,15 @@
 class Present
     def present_game(game)
+        grid = []
         game.game_state.each do |row|
-          return "x--\n---\n---" if row[0] == 'x'
-          return "-x-\n---\n---" if row[1] == 'x'
-          return "--x\n---\n---" if row[2] == 'x'
+            grid_row = ''
+            row.each do |square|
+                grid_row << '-' if square == ''
+                grid_row << 'x' if square == 'x'
+            end 
+            grid << grid_row 
         end
-        "---\n---\n---" 
+        grid.join("\n")
+        # "---\n---\n---" 
     end 
 end 

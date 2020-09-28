@@ -34,7 +34,7 @@ end
 # When: A player makes an valid move
 # Then: the move is shown on the grid 
 describe 'a player makes an valid move' do
-    xit 'move is shown on the grid' do
+    it 'move is shown on the grid' do
         # Arrange
         game = Game.new
         presenter = Present.new
@@ -50,7 +50,10 @@ describe 'a player makes an valid move' do
 end
 
 
-
+# Given: a game
+# When: the first player makes a move
+# Then: the next player is asked for a move
+# And: has the symbol 'o'
 
 
 # Given: A grid

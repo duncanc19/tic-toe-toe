@@ -61,5 +61,17 @@ context Present do
             # Assert
             expect(display).to eq("---\n-x-\n---")
         end
+        it 'move is shown on the grid second row' do
+            # Arrange
+            game = Game.new
+            presenter = Present.new
+    
+            # Act
+            result = game.add_move(1,2)
+            display = presenter.present_game(game)
+            
+            # Assert
+            expect(display).to eq("---\n--x\n---")
+        end
     end
 end
