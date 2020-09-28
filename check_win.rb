@@ -6,12 +6,13 @@ class CheckWin
         false 
     end 
     def self.check_columns(game)
-        return true if game.game_state[0][0] == 'x' \
-                    && game.game_state[1][0] == 'x' \
-                    && game.game_state[2][0] == 'x' 
-        return true if game.game_state[0][1] == 'x' \
-                    && game.game_state[1][1] == 'x' \
-                    && game.game_state[2][1] == 'x' 
+        3.times do |i|
+            return true if game.game_state[0][i] == game.current_player \
+                        && game.game_state[1][i] == game.current_player \
+                        && game.game_state[2][i] == game.current_player 
+        end 
+
+                    
         false
     end 
 end 
