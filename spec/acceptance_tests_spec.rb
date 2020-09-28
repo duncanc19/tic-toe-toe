@@ -30,6 +30,25 @@ describe 'a player makes an invalid move' do
     end
 end
 
+# Given: A grid
+# When: A player makes an valid move
+# Then: the move is shown on the grid 
+describe 'a player makes an valid move' do
+    xit 'move is shown on the grid' do
+        # Arrange
+        game = Game.new
+        presenter = Present.new
+
+        # Act
+        result = game.add_move(0,0)
+        display = presenter.present_game(game)
+
+        # Assert
+        expect(display).to eq("x--\n---\n---")
+
+    end
+end
+
 
 
 
