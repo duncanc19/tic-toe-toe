@@ -9,6 +9,9 @@ class CheckWin
         return true if game.game_state[0][0] == 'x' \
                     && game.game_state[1][0] == 'x' \
                     && game.game_state[2][0] == 'x' 
+        return true if game.game_state[0][1] == 'x' \
+                    && game.game_state[1][1] == 'x' \
+                    && game.game_state[2][1] == 'x' 
         false
     end 
 end 
