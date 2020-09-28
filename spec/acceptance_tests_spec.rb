@@ -56,8 +56,6 @@ end
 # When: the first player makes a move
 # Then: the next player is asked for a move
 # And: has the symbol 'o'
-
-
 describe 'the first player makes a move' do
     # it 'the next player is asked for a move' do
     #     # Arrange
@@ -93,9 +91,6 @@ end
 
 
 # Given: A grid
-
 # When: A player makes an winning move
-
 # Then: the player wins
-
 # And: the game is over
