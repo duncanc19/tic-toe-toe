@@ -78,4 +78,53 @@ context CheckWin do
       expect(result).to eq(true)  
     end
   end
+  describe "given a new game" do
+    it "returns false" do
+      # Arrange
+      game = Game.new
+
+      # Act
+      result = CheckWin.check_columns(game) 
+      # Assert  
+      expect(result).to eq(false)  
+    end
+  end
+  describe "given a complete first column (x's)" do
+    it "returns true" do
+      # Arrange
+      game = Game.new
+      game.add_move(0,0)
+      game.add_move(1,0)
+      game.add_move(2,0)
+      # Act
+      result = CheckWin.check_columns(game) 
+      # Assert  
+      expect(result).to eq(true)  
+    end
+  end
+  describe "given a incomplete first column (x's)" do
+    it "returns false" do
+      # Arrange
+      game = Game.new
+      game.add_move(0,0)
+
+      # Act
+      result = CheckWin.check_columns(game) 
+      # Assert  
+      expect(result).to eq(false)  
+    end
+  end
+  describe "given a complete second column (x's)" do
+    it "returns true" do
+      # Arrange
+      game = Game.new
+      game.add_move(0,1)
+      game.add_move(1,1)
+      game.add_move(2,1)
+      # Act
+      result = CheckWin.check_columns(game) 
+      # Assert  
+      expect(result).to eq(true)  
+    end
+  end
 end 
