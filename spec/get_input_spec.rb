@@ -66,5 +66,14 @@ context GetInput do
       # Assert 
       expect(result).to eq([1,2])
     end
+    it "receives valid move and converts to variables" do
+      # Arrange  
+      get_input = GetInput.new
+      move = "0,5"
+      # Act
+      result = get_input.convert_move(move)
+      # Assert 
+      expect(result).to eq([0,5])
+    end
   end
 end

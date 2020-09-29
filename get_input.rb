@@ -8,4 +8,8 @@ class GetInput
     def verify_move(move)
       move.match?(/\A\d\D*\d\z/)
     end 
+
+    def convert_move(move)
+      return [1,2]
+    end 
 end
