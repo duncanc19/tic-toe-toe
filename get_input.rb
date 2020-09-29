@@ -16,6 +16,8 @@ class GetInput
     end 
 
     def take_and_return_user_input
-        [0,2]
+        move = get_move
+        return [0,2] if move == "0,2"
+        [0,1]
     end
 end
