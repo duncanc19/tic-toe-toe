@@ -15,13 +15,13 @@ context GetInput do
       expect(get_input.get_move).to eq("0,2")    
     end
   end
-  describe "#verify_move" do
+  describe "#verify_move?" do
     it "when given a random string returns false" do 
       # Arrange
       move = "dakgfjelufhkbalekd"
       get_input = GetInput.new
       # Act
-      result = get_input.verify_move(move)
+      result = get_input.verify_move?(move)
       # Assert 
       expect(result).to eq(false)
     end
@@ -30,7 +30,7 @@ context GetInput do
         move = "2,2"
         get_input = GetInput.new
         # Act
-        result = get_input.verify_move(move)
+        result = get_input.verify_move?(move)
         # Assert 
         expect(result).to eq(true)
     end 
@@ -39,7 +39,7 @@ context GetInput do
         move = "0 2"
         get_input = GetInput.new
         # Act
-        result = get_input.verify_move(move)
+        result = get_input.verify_move?(move)
         # Assert 
         expect(result).to eq(true)
     end 
@@ -48,7 +48,7 @@ context GetInput do
         move = "1:2"
         get_input = GetInput.new
         # Act
-        result = get_input.verify_move(move)
+        result = get_input.verify_move?(move)
         # Assert 
         expect(result).to eq(true)
     end 
@@ -57,7 +57,7 @@ context GetInput do
       move = "10,20"
       get_input = GetInput.new
       # Act
-      result = get_input.verify_move(move)
+      result = get_input.verify_move?(move)
       # Assert 
       expect(result).to eq(false)
     end 
@@ -128,5 +128,14 @@ context GetInput do
       # Assert 
       expect(result).to eq([2,2])
     end
+    # it "returns a valid move" do
+    #     # Arrange  
+    #     get_input = GetInput.new
+    #     allow(get_input).to receive(:gets, :gets) {"2 ,20", "1 ,2"}
+    #     # Act
+    #     result = get_input.take_and_return_user_input
+    #     # Assert 
+    #     expect(result).to eq([1,2])
+    #   end
   end
 end
