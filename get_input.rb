@@ -1,8 +1,8 @@
 class GetInput
 
     def get_move
-      move = gets.chomp
-      return move
+      move = gets
+      return move.strip
     end
 
     def verify_move(move)
@@ -10,7 +10,8 @@ class GetInput
     end 
 
     def convert_move(move)
-      return [1,2] if move == "1,2"
-      [0,5]
+      row_number = move.match(/\A(\d)\D*(\d)\z/)[1].to_i
+      col_number = move.match(/\A(\d)\D*(\d)\z/)[2].to_i
+      [row_number,col_number]
     end 
 end

@@ -8,6 +8,12 @@ context GetInput do
       
       expect(get_input.get_move).to eq("0,2")    
     end
+    it "receives user move" do
+      get_input = GetInput.new
+      allow(get_input).to receive(:gets) {"0,2 \n"}
+      
+      expect(get_input.get_move).to eq("0,2")    
+    end
   end
   describe "#verify_move" do
     it "when given a random string returns false" do 
@@ -57,7 +63,7 @@ context GetInput do
     end 
   end 
   describe "#convert_move" do
-    it "receives valid move and converts to variables" do
+    it "receives valid move and converts to array" do
       # Arrange  
       get_input = GetInput.new
       move = "1,2"
@@ -66,7 +72,7 @@ context GetInput do
       # Assert 
       expect(result).to eq([1,2])
     end
-    it "receives valid move and converts to variables" do
+    it "receives valid move and converts to array" do
       # Arrange  
       get_input = GetInput.new
       move = "0,5"
@@ -75,14 +81,23 @@ context GetInput do
       # Assert 
       expect(result).to eq([0,5])
     end
-    it "receives valid move and converts to variables" do
-        # Arrange  
-        get_input = GetInput.new
-        move = "0,3"
-        # Act
-        result = get_input.convert_move(move)
-        # Assert 
-        expect(result).to eq([0,3])
-      end
+    it "receives valid move and converts to array" do
+      # Arrange  
+      get_input = GetInput.new
+      move = "0,3"
+      # Act
+      result = get_input.convert_move(move)
+      # Assert 
+      expect(result).to eq([0,3])
+    end
+    it "receives valid move and converts to array" do
+      # Arrange  
+      get_input = GetInput.new
+      move = "0: 3"
+      # Act
+      result = get_input.convert_move(move)
+      # Assert 
+      expect(result).to eq([0,3])
+    end
   end
 end
