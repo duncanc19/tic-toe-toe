@@ -17,6 +17,5 @@ class Present
             grid << grid_row 
         end
         grid.join("\n")
-        # "---\n---\n---" 
     end 
 end 

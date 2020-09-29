@@ -82,11 +82,19 @@ describe 'the first player makes a move' do
     end
 end
 
+# Given: A full grid
+# When: there is no winnin move
+# Then: its a draw! 
+# And: the game is over 
+
 # Given: A grid
 
 # When: a player makes a valid move
 
 # Then: the move is shown on the grid
+
+
+
 
 
 
