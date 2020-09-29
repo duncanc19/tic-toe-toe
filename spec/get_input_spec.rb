@@ -27,6 +27,24 @@ context GetInput do
         result = get_input.verify_move(move)
         # Assert 
         expect(result).to eq(true)
-      end 
+    end 
+    it "when given another correctly formatted string returns true" do 
+        # Arrange
+        move = "0,2"
+        get_input = GetInput.new
+        # Act
+        result = get_input.verify_move(move)
+        # Assert 
+        expect(result).to eq(true)
+    end 
+    it "when given another correctly formatted string returns true" do 
+        # Arrange
+        move = "1,2"
+        get_input = GetInput.new
+        # Act
+        result = get_input.verify_move(move)
+        # Assert 
+        expect(result).to eq(true)
+    end 
   end 
 end
