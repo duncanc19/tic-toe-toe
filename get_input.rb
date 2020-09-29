@@ -6,5 +6,6 @@ class GetInput
     end
 
     def verify_move(move)
+      false
     end 
 end

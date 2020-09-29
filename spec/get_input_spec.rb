@@ -9,17 +9,24 @@ context GetInput do
       expect(get_input.get_move).to eq("0,2")    
     end
   end
-  describe "#verify_move" do 
+  describe "#verify_move" do
     it "when given a random string returns false" do 
       # Arrange
       move = "dakgfjelufhkbalekd"
       get_input = GetInput.new
       # Act
       result = get_input.verify_move(move)
-
       # Assert 
       expect(result).to eq(false)
-
-    end 
+    end
+    it "when given a correctly formatted string returns true" do 
+        # Arrange
+        move = "2,2"
+        get_input = GetInput.new
+        # Act
+        result = get_input.verify_move(move)
+        # Assert 
+        expect(result).to eq(true)
+      end 
   end 
 end
