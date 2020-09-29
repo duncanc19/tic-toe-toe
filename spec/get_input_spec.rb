@@ -46,7 +46,7 @@ context GetInput do
         # Assert 
         expect(result).to eq(true)
     end 
-    it "when given two digit numberes, formatted correctly, string returns false" do 
+    it "when given two digit numbers, formatted correctly, string returns false" do 
       # Arrange
       move = "10,20"
       get_input = GetInput.new
@@ -54,6 +54,17 @@ context GetInput do
       result = get_input.verify_move(move)
       # Assert 
       expect(result).to eq(false)
+    end 
   end 
-  end 
+  describe "#convert_move" do
+    it "receives valid move and converts to variables" do
+      # Arrange  
+      get_input = GetInput.new
+      move = "1,2"
+      # Act
+      result = get_input.convert_move(move)
+      # Assert 
+      expect(result).to eq([1,2])
+    end
+  end
 end
