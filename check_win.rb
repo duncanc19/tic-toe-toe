@@ -5,14 +5,19 @@ class CheckWin
         end
         false 
     end 
+
+
     def self.check_columns(game)
         3.times do |i|
             return true if game.game_state[0][i] == game.current_player \
                         && game.game_state[1][i] == game.current_player \
                         && game.game_state[2][i] == game.current_player 
-        end 
+        end             
+        false
+    end 
 
-                    
+
+    def self.check_diagonals(game)
         false
     end 
 end 
