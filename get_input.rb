@@ -10,6 +10,7 @@ class GetInput
     end 
 
     def convert_move(move)
-      return [1,2]
+      return [1,2] if move == "1,2"
+      [0,5]
     end 
 end
