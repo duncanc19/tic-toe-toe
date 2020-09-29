@@ -32,5 +32,16 @@ context CheckDraw do
       # Assert
       expect(result).to eq(true)
     end
-  end       
+  end     
+  describe "given another full board" do
+    it "returns false" do
+      # Arrange
+      game = Game.new
+      game.game_state = [['o','x','o'],['o','x','x'],['x','o','x']]
+      # Act
+      result = CheckDraw.check_draw(game)
+      # Assert
+      expect(result).to eq(true)
+    end
+  end     
 end
