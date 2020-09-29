@@ -1,6 +1,7 @@
 class CheckWin
     def self.check_win(game)
-      true
+      return true if check_diagonals(game)
+      false
     end 
 
 

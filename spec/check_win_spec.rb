@@ -219,7 +219,21 @@ context CheckWin do
       expect(result).to eq(true)  
     end
   end
-  describe "for a winning game" do
+ 
+  describe "for an unfinished game" do
+    it "returns false" do
+      # Arrange
+      game = Game.new
+      game.add_move(0,1)
+      game.add_move(1,1)
+      game.add_move(2,2)
+      # Act
+      result = CheckWin.check_win(game) 
+      # Assert  
+      expect(result).to eq(false)  
+    end
+  end
+  describe "for a winning game (diagonal)" do
     it "returns true" do
       # Arrange
       game = Game.new
@@ -232,17 +246,18 @@ context CheckWin do
       expect(result).to eq(true)  
     end
   end
-  describe "for an unfinished game" do
-    it "returns false" do
+  describe "for a winning game (row) 'o'" do
+    it "returns true" do
       # Arrange
       game = Game.new
-      game.add_move(0,1)
+      game.next_player
+      game.add_move(1,0)
       game.add_move(1,1)
-      game.add_move(2,2)
+      game.add_move(1,2)
       # Act
       result = CheckWin.check_win(game) 
       # Assert  
-      expect(result).to eq(false)  
+      expect(result).to eq(true)  
     end
   end
 end 
