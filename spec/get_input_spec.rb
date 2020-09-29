@@ -4,9 +4,22 @@ context GetInput do
   describe "#get_move" do
     it "receives user move" do
       get_input = GetInput.new
-      allow(get_input).to receive(:gets) {"0 2\n"}
+      allow(get_input).to receive(:gets) {"0,2\n"}
       
-      expect(get_input.get_move).to eq("0 2")    
+      expect(get_input.get_move).to eq("0,2")    
     end
   end
+  describe "#verify_move" do 
+    it "when given a random string returns false" do 
+      # Arrange
+      move = "dakgfjelufhkbalekd"
+      get_input = GetInput.new
+      # Act
+      result = get_input.verify_move(move)
+
+      # Assert 
+      expect(result).to eq(false)
+
+    end 
+  end 
 end
