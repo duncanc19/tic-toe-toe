@@ -18,6 +18,9 @@ class CheckWin
 
 
     def self.check_diagonals(game)
+        return true if game.game_state[0][0] == game.current_player \
+                        && game.game_state[1][1] == game.current_player \
+                        && game.game_state[2][2] == game.current_player 
         false
     end 
 end 
