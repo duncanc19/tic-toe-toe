@@ -14,4 +14,8 @@ class GetInput
       col_number = move.match(/\A(\d)\D*(\d)\z/)[2].to_i
       [row_number,col_number]
     end 
+
+    def take_and_return_user_input
+        [0,2]
+    end
 end

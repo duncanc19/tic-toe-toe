@@ -100,4 +100,24 @@ context GetInput do
       expect(result).to eq([0,3])
     end
   end
+  describe "#take_and_return_user_input" do
+    it "returns a valid move" do
+      # Arrange  
+      get_input = GetInput.new
+      allow(get_input).to receive(:gets) {"0,2"}
+      # Act
+      result = get_input.take_and_return_user_input
+      # Assert 
+      expect(result).to eq([0,2])
+    end
+    it "returns a valid move" do
+        # Arrange  
+        get_input = GetInput.new
+        allow(get_input).to receive(:gets) {"0 , 1"}
+        # Act
+        result = get_input.take_and_return_user_input
+        # Assert 
+        expect(result).to eq([0,1])
+      end
+  end
 end
