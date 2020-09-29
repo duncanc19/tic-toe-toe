@@ -2,6 +2,7 @@ class CheckWin
     def self.check_win(game)
       return true if check_diagonals(game)
       return true if check_rows(game)
+      return true if check_columns(game)
       false
     end 
 
