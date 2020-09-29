@@ -1,7 +1,6 @@
 class CheckWin
     def self.check_win(game)
-        
-
+      true
     end 
 
 
