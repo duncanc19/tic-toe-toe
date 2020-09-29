@@ -6,8 +6,6 @@ class GetInput
     end
 
     def verify_move(move)
-      return true if move == "2,2"
-      return true if move == "0,2"
-      false
+      move.match?(/\A\d\D*\d\z/)
     end 
 end
