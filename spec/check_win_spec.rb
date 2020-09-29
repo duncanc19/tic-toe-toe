@@ -260,4 +260,17 @@ context CheckWin do
       expect(result).to eq(true)  
     end
   end
+  describe "for a winning game (column)" do
+    it "returns true" do
+      # Arrange
+      game = Game.new
+      game.add_move(0,2)
+      game.add_move(1,2)
+      game.add_move(2,2)
+      # Act
+      result = CheckWin.check_win(game) 
+      # Assert  
+      expect(result).to eq(true)  
+    end
+  end
 end 
