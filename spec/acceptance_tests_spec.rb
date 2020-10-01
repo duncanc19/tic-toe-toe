@@ -1,18 +1,20 @@
 require_relative "constants_test"
+require_relative "../game_controller"
 
 # When: a new game starts
 # Then: display an empty grid
 describe 'a new game starts' do
     it 'displays an empty grid on command line' do
         # Arrange
-        game = Game.new
-        presenter = Present.new
+        # game = Game.new
+        # presenter = Present.new
+        # game_controller
 
         # Act
-        string = presenter.present_game(game)
+        # string = presenter.present_game(game)
         expected_string = "#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
         # Assert
-        expect { presenter.output_to_command_line(string) }
+        expect { GameController.new }
         .to output(expected_string)
         .to_stdout_from_any_process
     end
@@ -25,12 +27,11 @@ describe "at the start of the game" do
     it "the user is asked for a move " do 
         # Arrange 
         game_controller = GameController.new
-        expected_string = "Please enter your move: "
+        expected_string = TEST_DEFAULT_INPUT_REQUEST
         #  Assert (Act is in expect)
         expect {  game_controller.ask_user }
         .to output(expected_string)
         .to_stdout_from_any_process
-
 
     end 
 end 
