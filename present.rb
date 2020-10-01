@@ -1,5 +1,3 @@
-
-
 class Present
 
     PLAYER1_SYMBOL = 'X'
