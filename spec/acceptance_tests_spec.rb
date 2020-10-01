@@ -18,6 +18,26 @@ describe 'a new game starts' do
     end
 end
 
+# Given: a game
+# When: the game is started 
+# Then: the user is asked for a move
+describe "at the start of the game" do 
+    it "the user is asked for a move " do 
+        # Arrange 
+        game_controller = GameController.new
+        expected_string = "Please enter your move: "
+        #  Assert (Act is in expect)
+        expect {  game_controller.ask_user }
+        .to output(expected_string)
+        .to_stdout_from_any_process
+
+
+    end 
+end 
+
+# Given: a game that has already commenced
+# When: the user is asked for a move
+# Then: the updated grid is shown in the command line 
 
 
 # Given: A grid
