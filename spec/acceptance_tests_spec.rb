@@ -3,17 +3,32 @@ require_relative "constants_test"
 # When: a new game starts
 # Then: display an empty grid
 describe 'a new game starts' do
-    it 'displays an empty grid' do
+    it 'displays an empty grid on command line' do
         # Arrange
         game = Game.new
         presenter = Present.new
 
         # Act
-        display = presenter.present_game(game)
+        string = presenter.present_game(game)
+        expected_string = "#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
         # Assert
-        expect(display).to eq("#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}")
+        expect { presenter.output_to_command_line(string) }
+        .to output(expected_string)
+        .to_stdout_from_any_process
     end
 end
+
+
+
+# it "returns a valid move" do
+#     # Arrange  
+#     get_input = GetInput.new
+#     allow(get_input).to receive(:gets) {"2 ,2"}
+#     # Act
+#     result = get_input.take_and_return_user_input
+#     # Assert 
+#     expect(result).to eq([2,2])
+#   end
 
 # Given: A grid
 # When: A player makes an invalid move
