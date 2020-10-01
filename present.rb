@@ -16,4 +16,8 @@ class Present
         end
         grid.join("\n")
     end 
+    
+    def output_to_command_line(string)
+        puts string
+    end 
 end 

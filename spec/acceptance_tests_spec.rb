@@ -20,16 +20,6 @@ end
 
 
 
-# it "returns a valid move" do
-#     # Arrange  
-#     get_input = GetInput.new
-#     allow(get_input).to receive(:gets) {"2 ,2"}
-#     # Act
-#     result = get_input.take_and_return_user_input
-#     # Assert 
-#     expect(result).to eq([2,2])
-#   end
-
 # Given: A grid
 # When: A player makes an invalid move
 # Then: the move is rejected
