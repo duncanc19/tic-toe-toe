@@ -23,7 +23,7 @@ context GameController do
     end
 
     describe "#play_move" do
-    it "returns false when move is out of bounds" do
+      it "returns false when move is invalid as per game.add_move" do
         # Arrange
         game_controller = GameController.new
         game_controller.verified_move = [0,5]
@@ -32,6 +32,16 @@ context GameController do
         # Assert  
         expect(result).to eq(false)
       end
+      it "returns true when move is valid" do
+        # Arrange
+        game_controller = GameController.new
+        game_controller.verified_move = [0,2]
+         # Act
+        result = game_controller.play_move
+        # Assert  
+        expect(result).to eq(true)
+      end
+
     #   it "updates game.game_state when move is in empty square" do
     #     # Arrange
     #     game_controller = GameController.new

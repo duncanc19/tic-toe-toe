@@ -19,5 +19,8 @@ class GameController
         @verified_move = verify.take_and_return_user_input(move)
     end 
 
+    def play_move
+        false
+    end
 
 end
