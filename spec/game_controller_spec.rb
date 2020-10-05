@@ -21,16 +21,26 @@ context GameController do
         expect(result).to eq([0,2])  
       end
     end
+
     describe "#play_move" do
-      it "updates game.game_state when move is in empty square" do
+    it "returns false when move is out of bounds" do
         # Arrange
         game_controller = GameController.new
-        game_controller.verified_move = [0,2]
-        expected_gamestate = [['','', 'x'],['','', ''],['','', '']]
-        # Act
+        game_controller.verified_move = [0,5]
+         # Act
         result = game_controller.play_move
         # Assert  
-        expect(game_controller.game.game_state).to eq(expected_gamestate)
+        expect(result).to eq(false)
       end
+    #   it "updates game.game_state when move is in empty square" do
+    #     # Arrange
+    #     game_controller = GameController.new
+    #     game_controller.verified_move = [0,2]
+    #     expected_gamestate = [['','', 'x'],['','', ''],['','', '']]
+    #     # Act
+    #     result = game_controller.play_move
+    #     # Assert  
+    #     expect(game_controller.game.game_state).to eq(expected_gamestate)
+    #   end
     end
 end
