@@ -20,7 +20,7 @@ class GameController
     end 
 
     def play_move
-        false
+        @game.add_move(@verified_move[0], @verified_move[1])
     end
 
 end

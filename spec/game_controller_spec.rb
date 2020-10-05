@@ -39,7 +39,7 @@ context GameController do
          # Act
         result = game_controller.play_move
         # Assert  
-        expect(result).to eq(true)
+        expect(result).to be_truthy
       end
 
     #   it "updates game.game_state when move is in empty square" do
