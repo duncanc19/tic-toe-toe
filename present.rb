@@ -1,8 +1,7 @@
+require_relative 'constants'
+
 class Present
 
-    PLAYER1_SYMBOL = 'X'
-    PLAYER2_SYMBOL = 'O'
-    EMPTY_SYMBOL = '-'
     def present_game(game)
         grid = []
         game.game_state.each do |row|

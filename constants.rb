@@ -1,0 +1,4 @@
+PLAYER1_SYMBOL = 'X'
+PLAYER2_SYMBOL = 'O'
+EMPTY_SYMBOL = '-'
+DEFAULT_INPUT_REQUEST = "Please enter your move: "

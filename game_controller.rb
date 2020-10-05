@@ -1,3 +1,5 @@
+require_relative "constants"
+
 class GameController
 
     def initialize
@@ -7,6 +9,6 @@ class GameController
     end
 
     def ask_user
-        print "Please enter your move: "
+        print DEFAULT_INPUT_REQUEST
     end
 end
