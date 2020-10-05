@@ -1,5 +1,6 @@
 require_relative "constants_test"
 require_relative "../game_controller"
+require_relative "../present"
 
 # When: a new game starts
 # Then: display an empty grid
@@ -14,7 +15,7 @@ describe 'a new game starts' do
         # string = presenter.present_game(game)
         expected_string = "#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
         # Assert
-        expect { GameController.new }
+        expect { Present.new }
         .to output(expected_string)
         .to_stdout_from_any_process
     end
@@ -89,12 +90,11 @@ end
 describe 'a player makes an valid move' do
     it 'move is shown on the grid' do
         # Arrange
-        game = Game.new
         presenter = Present.new
-
+        game = presenter.game_controller.game
         # Act
         result = game.add_move(0,0)
-        display = presenter.present_game(game)
+        display = presenter.create_grid_as_string
 
         # Assert
         expect(display).to eq("#{TEST_PLAYER1}#{TEST_EMPTY}#{TEST_EMPTY}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}")

@@ -1,11 +1,10 @@
 require_relative "constants"
 
 class GameController
-    attr_accessor :input, :verified_move
+    attr_accessor :input, :verified_move, :game
     def initialize
         @game = Game.new
-        @present = Present.new
-        @present.output_to_command_line(@present.present_game(@game))
+        
         @input = GetInput.new
     end
 

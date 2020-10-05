@@ -42,15 +42,15 @@ context GameController do
         expect(result).to be_truthy
       end
 
-    #   it "updates game.game_state when move is in empty square" do
-    #     # Arrange
-    #     game_controller = GameController.new
-    #     game_controller.verified_move = [0,2]
-    #     expected_gamestate = [['','', 'x'],['','', ''],['','', '']]
-    #     # Act
-    #     result = game_controller.play_move
-    #     # Assert  
-    #     expect(game_controller.game.game_state).to eq(expected_gamestate)
-    #   end
+      it "updates game.game_state when move is in empty square" do
+        # Arrange
+        game_controller = GameController.new
+        game_controller.verified_move = [0,2]
+        expected_gamestate = [['','', 'x'],['','', ''],['','', '']]
+        # Act
+        result = game_controller.play_move
+        # Assert  
+        expect(game_controller.game.game_state).to eq(expected_gamestate)
+      end
     end
 end
