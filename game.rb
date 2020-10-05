@@ -3,7 +3,7 @@ class Game
   attr_accessor :game_state, :current_player
   
   def initialize
-    @game_state = [['','', ''],['','', ''],['','', '']]
+    @game_state = [['', '', ''],['', '', ''],['', '', '']]
     @current_player = 'x'
   end
 
