@@ -42,7 +42,7 @@ end
 # Then: the move is accepted
 # And: Shown on the board in CL 
 describe "the user gives a valid move" do 
-    it "the board is updated and shown" do 
+    xit "the board is updated and shown" do 
         # Arrange 
         game_controller = GameController.new
         expected_string = TEST_DEFAULT_INPUT_REQUEST

@@ -11,4 +11,8 @@ class GameController
     def ask_user
         print DEFAULT_INPUT_REQUEST
     end
+
+    def receive_move
+        false
+    end 
 end
