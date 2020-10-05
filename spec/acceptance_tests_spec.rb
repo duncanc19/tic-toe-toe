@@ -34,7 +34,32 @@ describe "at the start of the game" do
         .to_stdout_from_any_process
 
     end 
-end 
+end
+
+
+# Given: the player is aked for a move
+# When: the player gives a valid move
+# Then: the move is accepted
+# And: Shown on the board in CL 
+describe "the user gives a valid move" do 
+    it "the board is updated and shown" do 
+        # Arrange 
+        game_controller = GameController.new
+        expected_string = TEST_DEFAULT_INPUT_REQUEST
+        game_controller.ask_user
+        allow(game_controller).to receive(:gets) {"0,2"}
+        game_controller.receive_move
+        game_controller.play_move 
+        expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
+        
+        #  Assert (Act is in expect)
+        expect {  game_controller.display_game }
+        .to output(expected_string)
+        .to_stdout_from_any_process
+
+    end 
+end
+
 
 # Given: a game that has already commenced
 # When: the user is asked for a move
