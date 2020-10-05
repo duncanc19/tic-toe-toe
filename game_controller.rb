@@ -12,7 +12,9 @@ class GameController
         print DEFAULT_INPUT_REQUEST
     end
 
-    def receive_move
-        false
+    def receive_move(input)
+        verify = VerifyAndConvertInput.new
+        move = input.get_move
+        return verify.take_and_return_user_input(move)
     end 
 end

@@ -5,17 +5,20 @@ context GameController do
       it "returns false when given empty string" do
         # Arrange
         game_controller = GameController.new
+        input = GetInput.new
         # Act
-        result = game_controller.receive_move 
+        allow(input).to receive(:gets) {"\n"}
+        result = game_controller.receive_move(input) 
         # Assert  
         expect(result).to eq(false)  
       end
       it "returns array when given valid move" do
         # Arrange
         game_controller = GameController.new
+        input = GetInput.new
         # Act
-        allow(game_controller).to receive(:gets) {"0,2\n"}
-        result = game_controller.receive_move 
+        allow(input).to receive(:gets) {"0,2\n"}
+        result = game_controller.receive_move(input) 
         # Assert  
         expect(result).to eq([0,2])  
       end
