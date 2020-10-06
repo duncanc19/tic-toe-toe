@@ -43,18 +43,18 @@ end
 # Then: the move is accepted
 # And: Shown on the board in CL 
 describe "the user gives a valid move" do 
-    xit "the board is updated and shown" do 
+    it "the board is updated and shown" do 
         # Arrange 
-        game_controller = GameController.new
-        expected_string = TEST_DEFAULT_INPUT_REQUEST
-        game_controller.ask_user
-        allow(game_controller).to receive(:gets) {"0,2"}
+        present = Present.new
+        game_controller = present.game_controller
+        allow(game_controller.input).to receive(:gets) {"0,2"}
         game_controller.receive_move
         game_controller.play_move 
         expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
-        
+        present.create_grid_as_string
+        present.output_to_command_line
         #  Assert (Act is in expect)
-        expect {  game_controller.display_game }
+        expect { present.output_to_command_line }
         .to output(expected_string)
         .to_stdout_from_any_process
 

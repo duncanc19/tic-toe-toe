@@ -4,7 +4,6 @@ class GameController
     attr_accessor :input, :verified_move, :game
     def initialize
         @game = Game.new
-        
         @input = GetInput.new
     end
 
@@ -20,6 +19,10 @@ class GameController
 
     def play_move
         @game.add_move(@verified_move[0], @verified_move[1])
+    end
+
+    def verify_and_format_move(move)
+        # ###################################################################
     end
 
 end
