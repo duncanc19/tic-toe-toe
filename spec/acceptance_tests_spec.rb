@@ -47,8 +47,9 @@ describe "the user gives a valid move" do
         # Arrange 
         present = Present.new
         game_controller = present.game_controller
-        allow(game_controller.input).to receive(:gets) {"0,2"}
-        game_controller.receive_move
+        allow(present.input).to receive(:gets) {"0,2"}
+        move = present.receive_input
+        game_controller.verify_and_format_move(move)
         game_controller.play_move 
         expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
         present.create_grid_as_string

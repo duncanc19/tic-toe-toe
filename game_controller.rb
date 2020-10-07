@@ -12,8 +12,8 @@ class GameController
     end
 
     def receive_move
-        verify = VerifyAndConvertInput.new
         move = @input.get_move
+        verify = VerifyAndConvertInput.new
         @verified_move = verify.take_and_return_user_input(move)
     end 
 
@@ -22,7 +22,8 @@ class GameController
     end
 
     def verify_and_format_move(move)
-        # ###################################################################
+        verify = VerifyAndConvertInput.new
+        @verified_move = verify.take_and_return_user_input(move)
     end
 
 end

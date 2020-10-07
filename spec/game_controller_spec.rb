@@ -1,22 +1,22 @@
 require_relative "../game_controller"
 
 context GameController do
-    describe "#receive_move" do
+    describe "#verify_and_format_move" do
       it "returns false when given empty string" do
         # Arrange
         game_controller = GameController.new
+        invalid_move = ""
         # Act
-        allow(game_controller.input).to receive(:gets) {"\n"}
-        result = game_controller.receive_move
+        result = game_controller.verify_and_format_move(invalid_move)
         # Assert  
         expect(result).to eq(false)  
       end
       it "returns array when given valid move" do
         # Arrange
         game_controller = GameController.new
+        valid_move = "0,2"
         # Act
-        allow(game_controller.input).to receive(:gets) {"0,2\n"}
-        result = game_controller.receive_move
+        result = game_controller.verify_and_format_move(valid_move)
         # Assert  
         expect(result).to eq([0,2])  
       end
