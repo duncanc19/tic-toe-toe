@@ -20,4 +20,6 @@ class GameController
         @verified_move = verify.take_and_return_user_input(move)
     end
 
+
+
 end
