@@ -11,12 +11,6 @@ class GameController
         print DEFAULT_INPUT_REQUEST
     end
 
-    def receive_move
-        move = @input.get_move
-        verify = VerifyAndConvertInput.new
-        @verified_move = verify.take_and_return_user_input(move)
-    end 
-
     def play_move
         @game.add_move(@verified_move[0], @verified_move[1])
     end

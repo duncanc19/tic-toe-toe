@@ -3,11 +3,12 @@ require_relative 'constants'
 
 
 class Present
-    attr_accessor :game_controller
+    attr_accessor :game_controller, :input
     def initialize
         @game_controller = GameController.new
         create_grid_as_string
         output_to_command_line
+        @input = GetInput.new
     end
 
     def create_grid_as_string
@@ -24,6 +25,11 @@ class Present
         end
         @grid.join("\n")
     end 
+
+    def receive_input
+        @input.get_move
+    end
+
     
     def output_to_command_line
         puts @grid
