@@ -63,6 +63,41 @@ describe "the user gives a valid move" do
 end
 
 
+describe "the user gives a valid move" do 
+    it "the board is updated and shown" do 
+        # Arrange 
+        present = Present.new
+        game_controller = present.game_controller
+        allow(present.input).to receive(:gets) {"0,2"}
+        move = present.receive_input
+        game_controller.verify_and_format_move(move)
+        game_controller.play_move 
+        expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
+        present.create_grid_as_string
+        present.output_to_command_line
+        #  Assert (Act is in expect)
+        expect { present.output_to_command_line }
+        .to output(expected_string)
+        .to_stdout_from_any_process
+
+    end 
+end
+
+# Given: The game has started
+# When: The first player has played a move
+# Then: The grid is updated and shown
+describe "the user gives a valid move" do 
+    it "the board is updated and shown" do 
+        present = Present.new
+        allow(present.input).to receive(:gets) {"0,2"}
+        present.play_game
+
+        expect('first output from play game').to eq()
+
+
+    end 
+end
+
 # Given: a game that has already commenced
 # When: the user is asked for a move
 # Then: the updated grid is shown in the command line 

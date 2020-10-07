@@ -1,7 +1,5 @@
 require_relative 'constants'
 
-
-
 class Present
     attr_accessor :game_controller, :input
     def initialize
@@ -30,7 +28,6 @@ class Present
         @input.get_move
     end
 
-    
     def output_to_command_line
         puts @grid
     end 
