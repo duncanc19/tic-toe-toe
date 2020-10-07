@@ -38,73 +38,6 @@ describe "at the start of the game" do
 end
 
 
-# Given: the player is aked for a move
-# When: the player gives a valid move
-# Then: the move is accepted
-# And: Shown on the board in CL 
-describe "the user gives a valid move" do 
-    it "the board is updated and shown" do 
-        # Arrange 
-        present = Present.new
-        game_controller = present.game_controller
-        allow(present.input).to receive(:gets) {"0,2"}
-        move = present.receive_input
-        game_controller.verify_and_format_move(move)
-        game_controller.play_move 
-        expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
-        present.create_grid_as_string
-        present.output_to_command_line
-        #  Assert (Act is in expect)
-        expect { present.output_to_command_line }
-        .to output(expected_string)
-        .to_stdout_from_any_process
-
-    end 
-end
-
-
-
-describe "the user gives a valid move" do 
-    it "the board is updated and shown" do 
-        # Arrange 
-        present = Present.new
-        turn = OneTurn.new
-        allow(present.input).to receive(:gets) {"0,2"}
-        turn.play_turn(present)
-        # move = present.receive_input
-        # game_controller.verify_and_format_move(move)
-        # game_controller.play_move 
-        expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
-        # present.create_grid_as_string
-        # present.output_to_command_line
-        #  Assert (Act is in expect)
-        expect { present.output_to_command_line }
-        .to output(expected_string)
-        .to_stdout_from_any_process
-
-    end 
-end
-
-# Given: The game has started
-# When: The first player has played a move
-# Then: The grid is updated and shown
-# describe "the user gives a valid move" do 
-#     it "the board is updated and shown" do 
-#         present = Present.new
-#         allow(present.input).to receive(:gets) {"0,2"}
-#         present.play_game
-
-#         expect('first output from play game').to eq()
-
-
-#     end 
-# end
-
-# Given: a game that has already commenced
-# When: the user is asked for a move
-# Then: the updated grid is shown in the command line 
-
-
 # Given: A grid
 # When: A player makes an invalid move
 # Then: the move is rejected
@@ -125,7 +58,7 @@ end
 # Given: A grid
 # When: A player makes an valid move
 # Then: the move is shown on the grid 
-describe 'a player makes an valid move' do
+describe 'a player makes a valid move' do
     it 'move is shown on the grid' do
         # Arrange
         presenter = Present.new
@@ -136,7 +69,6 @@ describe 'a player makes an valid move' do
 
         # Assert
         expect(display).to eq("#{TEST_PLAYER1}#{TEST_EMPTY}#{TEST_EMPTY}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}")
-
     end
 end
 
@@ -145,19 +77,7 @@ end
 # When: the first player makes a move
 # Then: the next player is asked for a move
 # And: has the symbol 'o'
-describe 'the first player makes a move' do
-    # it 'the next player is asked for a move' do
-    #     # Arrange
-    #     game = Game.new
-
-    #     # Act
-    #     game.add_move(0,0)
-    #     game.next_player
-    #     game.player
-
-    #     # Assert
-    #     expect(game.player).to eq("o")
-    # end
+describe 'after first player turn, current player becomes second player ' do
     it 'has the symbol "o"' do
         # Arrange
         game = Game.new
@@ -171,19 +91,34 @@ describe 'the first player makes a move' do
     end
 end
 
+# Given: the player is aked for a move
+# When: the player gives a valid move
+# Then: the move is accepted
+# And: Shown on the board in CL 
+describe "the user gives a valid move" do 
+    it "the board is updated and shown" do 
+        # Arrange 
+        present = Present.new
+        turn = OneTurn.new
+        allow(present.input).to receive(:gets) {"0,2"}
+        expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
+        # Act
+        turn.play_turn(present)
+        # Assert
+        expect { present.output_to_command_line }
+        .to output(expected_string)
+        .to_stdout_from_any_process
+    end 
+end
+
 # Given: A full grid
-# When: there is no winnin move
+# When: there is no winning move
 # Then: its a draw! 
 # And: the game is over 
 
 # Given: A grid
-
 # When: a player makes a valid move
-
 # Then: the move is shown on the grid
-
-
-
 
 
 
