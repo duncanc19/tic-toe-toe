@@ -3,18 +3,15 @@ Dir["*.rb"].each {|file| require_relative file if file != "main.rb" }
 
 
 class Main
-    def play_game
-        present = Present.new
-        turn = OneTurn.new
+    def play_game(present, turn)
         while (!CheckDraw.check_draw(present.game_controller.game)) do
             turn.play_turn(present) 
             break if CheckWin.check_win(present.game_controller.game)
             present.game_controller.game.next_player
         end
-        
     end
-    
 end
-
+present = Present.new
+turn = OneTurn.new
 main = Main.new
-main.play_game
+main.play_game(present,turn)

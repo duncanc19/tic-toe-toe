@@ -2,6 +2,10 @@ require_relative "constants_test"
 require_relative "../game_controller"
 require_relative "../present"
 
+# ********************************** BAD TEST ********************************
+# require_relative "../main"
+# ********************************** BAD TEST ********************************
+
 # When: a new game starts
 # Then: display an empty grid
 describe 'a new game starts' do
@@ -110,6 +114,30 @@ describe "the user gives a valid move" do
         .to_stdout_from_any_process
     end 
 end
+
+# ********************************** BAD TEST ********************************
+
+# # Given: A new game starts 
+# # When: a user gives several moves 
+# # Then: the board is output each time
+# describe "a user gives several moves" do 
+#     it "displays the board after each move" do
+#         # Arrange
+#         present = Present.new
+#         turn = OneTurn.new
+#         main = Main.new(present, turn)
+#         allow(turn.play_turn).should_receive(:gets).and_return("0 1","1 0","0 2", "1 1", "0 0")
+#         expected_string = "#{TEST_PLAYER1}#{TEST_PLAYER1}#{TEST_PLAYER1}\n#{TEST_PLAYER2}#{TEST_PLAYER2}#{TEST_EMPTY}\n#{TEST_THREE_EMPTY}\n"
+        
+#         # Act
+#         main.play_game
+#         # Assert
+#         expect { present.output_to_command_line }
+#         .to output(expected_string)
+#         .to_stdout_from_any_process
+#     end
+# end
+# ********************************** BAD TEST ********************************
 
 # Given: A full grid
 # When: there is no winning move
