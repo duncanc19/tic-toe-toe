@@ -4,7 +4,6 @@ class GameController
     attr_accessor :input, :verified_move, :game
     def initialize
         @game = Game.new
-        @input = GetInput.new
     end
 
     def ask_user
