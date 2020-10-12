@@ -1,6 +1,10 @@
 class Messages
     def self.message_hash(message_name)
-        return "Welcome to SCARY tic tac toe!! 🎃 vs 👻 " if message_name == 'welcome'
-        "Please enter your move: "
+        messages_hash = {
+            welcome: "Welcome to SCARY tic tac toe!! 🎃 vs 👻 ",
+            invalid_move: "Move invalid - please try again: ",
+            enter_move: "Please enter your move: "
+        }
+        messages_hash[message_name]
     end
 end
