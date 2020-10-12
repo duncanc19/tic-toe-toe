@@ -25,6 +25,21 @@ describe 'a new game starts' do
     end
 end
 
+# Given: a game
+# When: the game is started 
+# Then: the user is asked for a move
+describe "at the start of the game" do 
+    it "the user is asked for a move " do 
+        # Arrange 
+        game_controller = GameController.new
+        expected_string = TEST_DEFAULT_INPUT_REQUEST
+        #  Assert (Act is in expect)
+        expect {  game_controller.ask_user }
+        .to output(expected_string)
+        .to_stdout_from_any_process
+
+    end 
+end
 
 
 # Given: A grid
@@ -89,10 +104,11 @@ describe "the user gives a valid move" do
         # Arrange 
         present = Present.new
         turn = OneTurn.new
+        game_controller = present.game_controller
         allow(present.input).to receive(:gets) {"0,2"}
         expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
         # Act
-        turn.play_turn(present)
+        turn.play_turn(present, game_controller)
         # Assert
         expect { present.output_to_command_line }
         .to output(expected_string)

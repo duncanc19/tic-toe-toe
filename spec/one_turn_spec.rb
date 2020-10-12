@@ -6,9 +6,10 @@ context OneTurn do
         it "receives on valid move and shows it on the board" do
             # Arrange 
             present = Present.new
+            game_controller = present.game_controller
             turn = OneTurn.new
             allow(present.input).to receive(:gets) {"0,2"}
-            turn.play_turn(present)
+            turn.play_turn(present, game_controller)
             expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
             # Act and Assert (in {})
             expect { present.output_to_command_line }
@@ -20,10 +21,11 @@ context OneTurn do
             # Arrange 
             present = Present.new
             turn = OneTurn.new
+            game_controller = present.game_controller
             allow(present.input).to receive(:gets).and_return("blah", "0,2")
             expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
             # Act 
-            turn.play_turn(present)
+            turn.play_turn(present, game_controller)
             # Assert (in {})
             expect { present.output_to_command_line }
             .to output(expected_string)
@@ -34,10 +36,11 @@ context OneTurn do
             # Arrange 
             present = Present.new
             turn = OneTurn.new
+            game_controller = present.game_controller
             allow(present.input).to receive(:gets).and_return("0,8", "0,2")
             expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
             # Act 
-            turn.play_turn(present)
+            turn.play_turn(present, game_controller)
             # Assert (in {})
             expect { present.output_to_command_line }
             .to output(expected_string)
@@ -47,10 +50,11 @@ context OneTurn do
             # Arrange 
             present = Present.new
             turn = OneTurn.new
+            game_controller = present.game_controller
             allow(present.input).to receive(:gets).and_return("blah","0,8", "0,2")
             expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
             # Act 
-            turn.play_turn(present)
+            turn.play_turn(present, game_controller)
             # Assert (in {})
             expect { present.output_to_command_line }
             .to output(expected_string)

@@ -1,6 +1,5 @@
 class OneTurn 
-    def play_turn(present)
-        game_controller = present.game_controller
+    def play_turn(present, game_controller)
         get_valid_move(present)
         present.create_grid_as_string
         present.output_to_command_line
