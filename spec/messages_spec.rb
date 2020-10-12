@@ -21,6 +21,12 @@ context Messages do
             # Assert
             expect(result).to eq(TEST_WRONG_INPUT)
         end
+        it "when given 'draw' returns standard draw message" do
+            # Act 
+            result = Messages.message_hash(:draw)
+            # Assert
+            expect(result).to eq(TEST_DRAW)
+        end
     end
     describe ".winning_message" do
         it "when given player1, returns player1 winning message" do
@@ -28,6 +34,12 @@ context Messages do
             result = Messages.winning_message(TEST_PLAYER1)
             # Assert
             expect(result).to eq(TEST_PLAYER1_WIN)
+        end
+        it "when given player2, returns player2 winning message" do
+            # Act 
+            result = Messages.winning_message(TEST_PLAYER2)
+            # Assert
+            expect(result).to eq(TEST_PLAYER2_WIN)
         end
     end
 end
