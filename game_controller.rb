@@ -6,10 +6,6 @@ class GameController
         @game = Game.new
     end
 
-    def ask_user
-        print DEFAULT_INPUT_REQUEST
-    end
-
     def play_move
         @game.add_move(@verified_move[0], @verified_move[1])
     end
