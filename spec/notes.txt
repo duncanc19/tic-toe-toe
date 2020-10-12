@@ -1,0 +1,5 @@
+X Get input 
+- Your turn X 
+- Wrong input, try again
+- Somebody won
+- Its a draw

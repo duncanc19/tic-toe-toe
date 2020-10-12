@@ -15,5 +15,11 @@ context Messages do
             # Assert
             expect(result).to eq(TEST_DEFAULT_INPUT_REQUEST)
         end
+        it "when given 'invalid_move' returns standard invalid message" do
+            # Act 
+            result = Messages.message_hash("invalid_move")
+            # Assert
+            expect(result).to eq(TEST_WRONG_INPUT)
+        end
     end
 end
