@@ -31,11 +31,6 @@ class Present
     def output_to_command_line
         puts @grid
     end 
-    def output_message_to_command_line_newline(message)
-        puts message
-    end
-    def output_message_to_command_line(message)
-        print message
-    end
+
 
 end 
