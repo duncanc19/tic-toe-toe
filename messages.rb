@@ -11,4 +11,7 @@ class Messages
     def self.winning_message(player)
         "🎉🥳🎉🥳🎉🥳 #{player} WINS! 🎉🥳🎉🥳🎉🥳"
     end
+    def self.player_turn_message(player) 
+        "It's #{player}'s turn! "
+    end
 end

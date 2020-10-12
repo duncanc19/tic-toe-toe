@@ -50,5 +50,11 @@ context Messages do
            # Assert
            expect(result).to eq(TEST_PLAYER1_TURN) 
         end
+        it "tells player2 it's their turn" do
+            # Act 
+            result = Messages.player_turn_message(TEST_PLAYER2)
+            # Assert
+            expect(result).to eq(TEST_PLAYER2_TURN) 
+         end
     end
 end
