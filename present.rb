@@ -1,7 +1,7 @@
 require_relative 'constants'
 
 class Present
-    attr_accessor :game_controller, :input
+    attr_accessor :input
     def initialize
         @input = GetInput.new
     end
