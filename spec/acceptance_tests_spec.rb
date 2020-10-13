@@ -105,11 +105,12 @@ describe "the user gives a valid move" do
         # Arrange 
         game_controller = GameController.new
         present = Present.new
+        get_input = GetInput.new
         turn = OneTurn.new
-        allow(present.input).to receive(:gets) {"0,2"}
+        allow(get_input).to receive(:gets) {"0,2"}
         expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
         # Act
-        turn.play_turn(present, game_controller)
+        turn.play_turn(present, get_input, game_controller)
         # Assert
         expect { present.show_grid(game_controller) }
         .to output(expected_string)

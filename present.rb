@@ -25,9 +25,9 @@ class Present
         @grid.join("\n")
     end 
 
-    def receive_input
-        @input.get_move
-    end
+    # def receive_input
+    #     @input.get_move
+    # end
 
 
 
