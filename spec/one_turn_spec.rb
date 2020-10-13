@@ -20,47 +20,47 @@ context OneTurn do
 
         it "receives an invalid(wrong format) move, then a valid move so shows valid move on the board" do
             # Arrange 
-            game_controller = GameController.new
+            game = Game.new
             present = Present.new
             get_input = GetInput.new
             turn = OneTurn.new
             allow(get_input).to receive(:gets).and_return("blah", "0,2")
             expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
             # Act 
-            turn.play_turn(present, get_input, game_controller)
+            turn.play_turn(present, get_input, game)
             # Assert (in {})
-            expect { present.show_grid(game_controller) }
+            expect { present.show_grid(game) }
             .to output(expected_string)
             .to_stdout_from_any_process
         end
 
         it "receives an invalid(game rules) move, then a valid move so shows valid move on the board" do
             # Arrange 
-            game_controller = GameController.new
+            game = Game.new
             present = Present.new
             get_input = GetInput.new
             turn = OneTurn.new
             allow(get_input).to receive(:gets).and_return("0,8", "0,2")
             expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
             # Act 
-            turn.play_turn(present, get_input, game_controller)
+            turn.play_turn(present, get_input, game)
             # Assert (in {})
-            expect { present.show_grid(game_controller) }
+            expect { present.show_grid(game) }
             .to output(expected_string)
             .to_stdout_from_any_process
         end
         it "receives both types of invalid move, then a valid move so shows valid move on the board" do
             # Arrange 
-            game_controller = GameController.new
+            game = Game.new
             present = Present.new
             get_input = GetInput.new
             turn = OneTurn.new
             allow(get_input).to receive(:gets).and_return("blah","0,8", "0,2")
             expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
             # Act 
-            turn.play_turn(present, get_input, game_controller)
+            turn.play_turn(present, get_input, game)
             # Assert (in {})
-            expect { present.show_grid(game_controller) }
+            expect { present.show_grid(game) }
             .to output(expected_string)
             .to_stdout_from_any_process
         end

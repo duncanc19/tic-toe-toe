@@ -1,5 +1,5 @@
 require_relative "constants_test"
-require_relative "../game_controller"
+require_relative "../game"
 require_relative "../present"
 
 # ********************************** BAD TEST ********************************
@@ -12,12 +12,12 @@ describe 'a new game starts' do
     it 'displays an empty grid on command line' do
         # Arrange
         presenter = Present.new
-        game_controller = GameController.new
+        game = Game.new
 
         # Act
         expected_string = "#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
         # Assert
-        expect { presenter.show_grid(game_controller) }
+        expect { presenter.show_grid(game) }
         .to output(expected_string)
         .to_stdout_from_any_process
     end
@@ -52,15 +52,13 @@ end
 describe 'a player makes a valid move' do
     it 'move is shown on the grid' do
         # Arrange
-        game_controller = GameController.new
         presenter = Present.new
-        game = game_controller.game
+        game = Game.new
         # Act
         result = game.add_move(0,0)
-        display = presenter.create_grid_as_string(game_controller)
         expected_string = "#{TEST_PLAYER1}#{TEST_EMPTY}#{TEST_EMPTY}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
         # Assert
-        expect { presenter.show_grid(game_controller) }
+        expect { presenter.show_grid(game) }
         .to output(expected_string)
         .to_stdout_from_any_process
     end
@@ -92,16 +90,16 @@ end
 describe "the user gives a valid move" do 
     it "the board is updated and shown" do 
         # Arrange 
-        game_controller = GameController.new
         present = Present.new
+        game = Game.new
         get_input = GetInput.new
         turn = OneTurn.new
         allow(get_input).to receive(:gets) {"0,2"}
         expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
         # Act
-        turn.play_turn(present, get_input, game_controller)
+        turn.play_turn(present, get_input, game)
         # Assert
-        expect { present.show_grid(game_controller) }
+        expect { present.show_grid(game) }
         .to output(expected_string)
         .to_stdout_from_any_process
     end 
