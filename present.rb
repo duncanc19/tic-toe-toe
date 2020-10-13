@@ -9,6 +9,10 @@ class Present
         @input = GetInput.new
     end
 
+    def show_grid(game_controller)
+        puts create_grid_as_string(game_controller)
+    end
+
     def create_grid_as_string
         @grid = []
         current_game_state = @game_controller.game.game_state
