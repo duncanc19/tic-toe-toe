@@ -5,9 +5,8 @@ context Present do
     describe "When an empty game is passed to Present" do
         it "outputs an empty grid" do 
             # Arrange
-            presenter = Present.new
             game_controller = GameController.new
-            
+            presenter = Present.new(game_controller)
             # Act
             display = presenter.create_grid_as_string(game_controller)
             # Assert
@@ -17,8 +16,8 @@ context Present do
     describe 'a player makes an valid move' do
         it 'move is shown on the grid first row [0,0]' do
             # Arrange
-            presenter = Present.new
             game_controller = GameController.new
+            presenter = Present.new(game_controller)
             game = game_controller.game
             # Act
             result = game.add_move(0,0)
@@ -29,8 +28,8 @@ context Present do
         end
         it 'move is shown on the grid first row [0,2]' do
             # Arrange
-            presenter = Present.new
             game_controller = GameController.new
+            presenter = Present.new(game_controller)
             game = game_controller.game
             # Act
             result = game.add_move(0,2)
@@ -41,8 +40,8 @@ context Present do
         end
         it 'move is shown on the grid first row[0,1]' do
             # Arrange
-            presenter = Present.new
             game_controller = GameController.new
+            presenter = Present.new(game_controller)
             game = game_controller.game
             # Act
             result = game.add_move(0,1)
@@ -53,8 +52,8 @@ context Present do
         end
         it 'move is shown on the grid second row [1,1]' do
             # Arrange
-            presenter = Present.new
             game_controller = GameController.new
+            presenter = Present.new(game_controller)
             game = game_controller.game
             # Act
             result = game.add_move(1,1)
@@ -64,8 +63,8 @@ context Present do
         end
         it 'move is shown on the grid second row [1,2]' do
             # Arrange
-            presenter = Present.new
             game_controller = GameController.new
+            presenter = Present.new(game_controller)
             game = game_controller.game
             # Act
             result = game.add_move(1,2)
@@ -77,8 +76,8 @@ context Present do
     describe 'two moves can be presented' do
         it "shows two x's if player isnt changed" do
             # Arrange
-            presenter = Present.new
             game_controller = GameController.new
+            presenter = Present.new(game_controller)
             game = game_controller.game
             # Act
             game.add_move(1,2)
@@ -89,8 +88,8 @@ context Present do
         end 
         it "shows one x and one o if player is changed" do
             # Arrange
-            presenter = Present.new
             game_controller = GameController.new
+            presenter = Present.new(game_controller)
             game = game_controller.game
             # Act
             game.add_move(1,2)

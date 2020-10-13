@@ -13,13 +13,13 @@ describe 'a new game starts' do
         # Arrange
         # game = Game.new
         # presenter = Present.new
-        # game_controller
+        game_controller = GameController.new
 
         # Act
         # string = presenter.present_game(game)
         expected_string = "#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
         # Assert
-        expect { Present.new }
+        expect { Present.new(game_controller) }
         .to output(expected_string)
         .to_stdout_from_any_process
     end
@@ -65,8 +65,8 @@ end
 describe 'a player makes a valid move' do
     it 'move is shown on the grid' do
         # Arrange
-        presenter = Present.new
-        game_controller = presenter.game_controller
+        game_controller = GameController.new
+        presenter = Present.new(game_controller)
         game = game_controller.game
         # Act
         result = game.add_move(0,0)
@@ -103,9 +103,9 @@ end
 describe "the user gives a valid move" do 
     it "the board is updated and shown" do 
         # Arrange 
-        present = Present.new
+        game_controller = GameController.new
+        present = Present.new(game_controller)
         turn = OneTurn.new
-        game_controller = present.game_controller
         allow(present.input).to receive(:gets) {"0,2"}
         expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
         # Act

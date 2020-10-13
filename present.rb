@@ -2,8 +2,7 @@ require_relative 'constants'
 
 class Present
     attr_accessor :game_controller, :input
-    def initialize
-        @game_controller = GameController.new
+    def initialize(game_controller)
         show_grid(game_controller)
         @input = GetInput.new
     end
