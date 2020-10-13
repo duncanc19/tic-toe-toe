@@ -5,15 +5,15 @@ context OneTurn do
     describe "#play_turn" do
         it "receives on valid move and shows it on the board" do
             # Arrange 
-            game_controller = GameController.new
+            game = Game.new
             present = Present.new
             turn = OneTurn.new
             get_input = GetInput.new
             allow(get_input).to receive(:gets) {"0,2"}
-            turn.play_turn(present, get_input, game_controller)
+            turn.play_turn(present, get_input, game)
             expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
             # Act and Assert (in {})
-            expect { present.show_grid(game_controller) }
+            expect { present.show_grid(game) }
             .to output(expected_string)
             .to_stdout_from_any_process
         end

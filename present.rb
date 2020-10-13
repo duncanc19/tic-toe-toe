@@ -2,13 +2,13 @@ require_relative 'constants'
 
 class Present
 
-    def show_grid(game_controller)
-        puts create_grid_as_string(game_controller)
+    def show_grid(game)
+        puts create_grid_as_string(game)
     end
 
-    def create_grid_as_string(game_controller)
+    def create_grid_as_string(game)
         @grid = []
-        current_game_state = game_controller.game.game_state
+        current_game_state = game.game_state
         current_game_state.each do |row|
             grid_row = ''
             row.each do |square|
