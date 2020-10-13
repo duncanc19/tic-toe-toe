@@ -1,7 +1,7 @@
 require_relative "constants"
 
 class GameController
-    attr_accessor :input, :verified_move, :game
+    attr_accessor  :verified_move, :game
     def initialize
         @game = Game.new
     end
