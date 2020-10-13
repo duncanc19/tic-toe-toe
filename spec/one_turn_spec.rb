@@ -6,7 +6,7 @@ context OneTurn do
         it "receives on valid move and shows it on the board" do
             # Arrange 
             game_controller = GameController.new
-            present = Present.new(game_controller)
+            present = Present.new
             turn = OneTurn.new
             allow(present.input).to receive(:gets) {"0,2"}
             turn.play_turn(present, game_controller)
@@ -20,7 +20,7 @@ context OneTurn do
         it "receives an invalid(wrong format) move, then a valid move so shows valid move on the board" do
             # Arrange 
             game_controller = GameController.new
-            present = Present.new(game_controller)
+            present = Present.new
             turn = OneTurn.new
             allow(present.input).to receive(:gets).and_return("blah", "0,2")
             expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
@@ -35,7 +35,7 @@ context OneTurn do
         it "receives an invalid(game rules) move, then a valid move so shows valid move on the board" do
             # Arrange 
             game_controller = GameController.new
-            present = Present.new(game_controller)
+            present = Present.new
             turn = OneTurn.new
             allow(present.input).to receive(:gets).and_return("0,8", "0,2")
             expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
@@ -49,7 +49,7 @@ context OneTurn do
         it "receives both types of invalid move, then a valid move so shows valid move on the board" do
             # Arrange 
             game_controller = GameController.new
-            present = Present.new(game_controller)
+            present = Present.new
             turn = OneTurn.new
             allow(present.input).to receive(:gets).and_return("blah","0,8", "0,2")
             expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"

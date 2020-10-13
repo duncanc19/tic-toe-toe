@@ -12,14 +12,13 @@ describe 'a new game starts' do
     it 'displays an empty grid on command line' do
         # Arrange
         # game = Game.new
-        # presenter = Present.new
+        presenter = Present.new
         game_controller = GameController.new
 
         # Act
-        # string = presenter.present_game(game)
         expected_string = "#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
         # Assert
-        expect { Present.new(game_controller) }
+        expect { presenter.show_grid(game_controller) }
         .to output(expected_string)
         .to_stdout_from_any_process
     end
@@ -66,14 +65,16 @@ describe 'a player makes a valid move' do
     it 'move is shown on the grid' do
         # Arrange
         game_controller = GameController.new
-        presenter = Present.new(game_controller)
+        presenter = Present.new
         game = game_controller.game
         # Act
         result = game.add_move(0,0)
         display = presenter.create_grid_as_string(game_controller)
-
+        expected_string = "#{TEST_PLAYER1}#{TEST_EMPTY}#{TEST_EMPTY}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
         # Assert
-        expect(display).to eq("#{TEST_PLAYER1}#{TEST_EMPTY}#{TEST_EMPTY}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}")
+        expect { presenter.show_grid(game_controller) }
+        .to output(expected_string)
+        .to_stdout_from_any_process
     end
 end
 
@@ -104,7 +105,7 @@ describe "the user gives a valid move" do
     it "the board is updated and shown" do 
         # Arrange 
         game_controller = GameController.new
-        present = Present.new(game_controller)
+        present = Present.new
         turn = OneTurn.new
         allow(present.input).to receive(:gets) {"0,2"}
         expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
