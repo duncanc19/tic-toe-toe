@@ -1,6 +1,6 @@
 class Game
 
-  attr_accessor :game_state, :current_player
+  attr_accessor :game_state, :current_player, :verified_move
   
   def initialize
     @game_state = [['', '', ''],['', '', ''],['', '', '']]
@@ -22,4 +22,13 @@ class Game
     player_array = {'x' => 'o', 'o' => 'x'}
     @current_player = player_array[@current_player]
   end 
+
+  def play_move
+    add_move(@verified_move[0], @verified_move[1])
+  end
+
+  def verify_and_format_move(move)
+    verify = VerifyAndConvertInput.new
+    @verified_move = verify.take_and_return_user_input(move)
+  end
 end
