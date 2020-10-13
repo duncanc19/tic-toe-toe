@@ -11,7 +11,6 @@ require_relative "../present"
 describe 'a new game starts' do
     it 'displays an empty grid on command line' do
         # Arrange
-        # game = Game.new
         presenter = Present.new
         game_controller = GameController.new
 
