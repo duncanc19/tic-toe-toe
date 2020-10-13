@@ -92,12 +92,12 @@ describe "the user gives a valid move" do
         # Arrange 
         game = Game.new
         present = Present.new
-        turn = OneTurn.new
         get_input = GetInput.new
+        verify = VerifyAndConvertInput.new
         allow(get_input).to receive(:gets) {"0,2"}
         expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
         # Act 
-        turn.get_valid_move(get_input, game)
+        verify.get_valid_move(get_input, game)
         # Assert
         expect { present.show_grid(game) }
         .to output(expected_string)
@@ -110,11 +110,11 @@ describe "the user gives invalid moves" do
         game = Game.new
         present = Present.new
         get_input = GetInput.new
-        turn = OneTurn.new
+        verify = VerifyAndConvertInput.new
         allow(get_input).to receive(:gets).and_return("blah", "0,2")
         expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
         # Act 
-        turn.get_valid_move(get_input, game)
+        verify.get_valid_move(get_input, game)
         # Assert (in {})
         expect { present.show_grid(game) }
         .to output(expected_string)
@@ -126,11 +126,11 @@ describe "the user gives invalid moves" do
         game = Game.new
         present = Present.new
         get_input = GetInput.new
-        turn = OneTurn.new
+        verify = VerifyAndConvertInput.new
         allow(get_input).to receive(:gets).and_return("0,8", "0,2")
         expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
         # Act 
-        turn.get_valid_move(get_input, game)
+        verify.get_valid_move(get_input, game)
         # Assert (in {})
         expect { present.show_grid(game) }
         .to output(expected_string)
@@ -141,11 +141,11 @@ describe "the user gives invalid moves" do
         game = Game.new
         present = Present.new
         get_input = GetInput.new
-        turn = OneTurn.new
+        verify = VerifyAndConvertInput.new
         allow(get_input).to receive(:gets).and_return("blah","0,8", "0,2")
         expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
         # Act 
-        turn.get_valid_move(get_input, game)
+        verify.get_valid_move(get_input, game)
         # Assert (in {})
         expect { present.show_grid(game) }
         .to output(expected_string)
