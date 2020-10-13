@@ -4,8 +4,7 @@ class Present
     attr_accessor :game_controller, :input
     def initialize
         @game_controller = GameController.new
-        create_grid_as_string
-        output_to_command_line
+        show_grid(game_controller)
         @input = GetInput.new
     end
 
@@ -13,9 +12,9 @@ class Present
         puts create_grid_as_string(game_controller)
     end
 
-    def create_grid_as_string
+    def create_grid_as_string(game_controller)
         @grid = []
-        current_game_state = @game_controller.game.game_state
+        current_game_state = game_controller.game.game_state
         current_game_state.each do |row|
             grid_row = ''
             row.each do |square|
@@ -32,9 +31,7 @@ class Present
         @input.get_move
     end
 
-    def output_to_command_line
-        puts @grid
-    end 
+
 
 
 end 

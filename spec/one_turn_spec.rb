@@ -12,7 +12,7 @@ context OneTurn do
             turn.play_turn(present, game_controller)
             expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
             # Act and Assert (in {})
-            expect { present.output_to_command_line }
+            expect { present.show_grid(game_controller) }
             .to output(expected_string)
             .to_stdout_from_any_process
         end
@@ -27,7 +27,7 @@ context OneTurn do
             # Act 
             turn.play_turn(present, game_controller)
             # Assert (in {})
-            expect { present.output_to_command_line }
+            expect { present.show_grid(game_controller) }
             .to output(expected_string)
             .to_stdout_from_any_process
         end
@@ -42,7 +42,7 @@ context OneTurn do
             # Act 
             turn.play_turn(present, game_controller)
             # Assert (in {})
-            expect { present.output_to_command_line }
+            expect { present.show_grid(game_controller) }
             .to output(expected_string)
             .to_stdout_from_any_process
         end
@@ -56,7 +56,7 @@ context OneTurn do
             # Act 
             turn.play_turn(present, game_controller)
             # Assert (in {})
-            expect { present.output_to_command_line }
+            expect { present.show_grid(game_controller) }
             .to output(expected_string)
             .to_stdout_from_any_process
         end

@@ -66,10 +66,11 @@ describe 'a player makes a valid move' do
     it 'move is shown on the grid' do
         # Arrange
         presenter = Present.new
-        game = presenter.game_controller.game
+        game_controller = presenter.game_controller
+        game = game_controller.game
         # Act
         result = game.add_move(0,0)
-        display = presenter.create_grid_as_string
+        display = presenter.create_grid_as_string(game_controller)
 
         # Assert
         expect(display).to eq("#{TEST_PLAYER1}#{TEST_EMPTY}#{TEST_EMPTY}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}")
@@ -110,7 +111,7 @@ describe "the user gives a valid move" do
         # Act
         turn.play_turn(present, game_controller)
         # Assert
-        expect { present.output_to_command_line }
+        expect { present.show_grid(game_controller) }
         .to output(expected_string)
         .to_stdout_from_any_process
     end 
