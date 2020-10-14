@@ -157,9 +157,30 @@ context VerifyAndConvertInput do
         it "returns a false given an invalid string" do
           # Arrange  
           verify_input = described_class.new
-          good_move = "2, 50"
+          bad_move = "2, 50"
+          game_state = double('game state!')
           # Act
-          result = verify_input.take_and_return_user_input(good_move)
+          result = verify_input.verify_and_convert_move(bad_move, game_state)
+          # Assert 
+          expect(result).to eq(false)
+        end
+        it "returns a false given correctly formatted move outside of grid" do
+          # Arrange  
+          verify_input = described_class.new
+          bad_move = "6, 5"
+          game_state = double('game state!')
+          # Act
+          result = verify_input.verify_and_convert_move(bad_move, game_state)
+          # Assert 
+          expect(result).to eq(false)
+        end
+        it "returns a false given correctly formatted move on taken space" do
+          # Arrange  
+          verify_input = described_class.new
+          bad_move = "1, 0"
+          game_state = [['', '', ''],['x', '', ''],['', '', '']]
+          # Act
+          result = verify_input.verify_and_convert_move(bad_move, game_state)
           # Assert 
           expect(result).to eq(false)
         end

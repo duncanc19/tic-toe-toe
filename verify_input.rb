@@ -5,6 +5,14 @@ class VerifyAndConvertInput
         convert_move(move)
     end
 
+    def verify_and_convert_move(move, game_state)
+        return false if !correct_format?(move) 
+        converted_move = convert_move(move)
+        return false if out_of_grid?(converted_move)
+        return false if space_taken?(converted_move, game_state)
+        converted_move
+    end
+
     def correct_format?(move)
         move.match?(/\A\d\D*\d\z/)
     end 
