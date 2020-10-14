@@ -15,7 +15,7 @@ class Main
             game.next_player
         end
     end
-    
+
     def turn(get_input, verify, game)
         move = false
         while !move do
@@ -24,10 +24,5 @@ class Main
             move = verify.verify_and_convert_move(move, game.game_state)
         end 
         game.add_move(move[0], move[1])
-    end
-
-    def end_game
-        puts "Game has ended"
-        exit
     end
 end
