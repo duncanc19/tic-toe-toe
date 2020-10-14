@@ -121,7 +121,23 @@ describe "the user gives invalid moves" do
         .to output(expected_string)
         .to_stdout_from_any_process
     end
-
+end
+# describe "the user quits the game early" do
+#     it "exits game when user types 'quit'" do
+#         # Arrange 
+#         main = Main.new
+#         game = Game.new
+#         present = Present.new
+#         get_input = GetInput.new
+#         verify = VerifyAndConvertInput.new
+#         expected_string = "Game has ended\n"
+#         allow(get_input).to receive(:gets).and_return("quit")
+#         # Act 
+        
+#         # Assert (in {})
+#         expect (main.play_game(present, game, verify, get_input)).to receive(:exit)
+#     end
+# end
     # it "receives an invalid(game rules) move, then a valid move so shows valid move on the board" do
     #     # Arrange 
     #     game = Game.new
@@ -152,7 +168,6 @@ describe "the user gives invalid moves" do
     #     .to output(expected_string)
     #     .to_stdout_from_any_process
     # end
-end
 
 # ********************************** BAD TEST ********************************
 
