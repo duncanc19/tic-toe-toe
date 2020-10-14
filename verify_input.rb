@@ -1,4 +1,6 @@
 class VerifyAndConvertInput 
+
+
     def verify_move?(move)
         move.match?(/\A\d\D*\d\z/)
     end 
@@ -14,6 +16,12 @@ class VerifyAndConvertInput
         convert_move(move)
     end
 
+
+    # def invalid_move?(row,col)
+    #     return true if row > 2 || col > 2
+    #     return true if @game_state[row][col] == 'o' || @game_state[row][col] == 'x' 
+    #     false
+    #  end
     def get_valid_move(get_input, game)
         valid_move = false
         while !valid_move
