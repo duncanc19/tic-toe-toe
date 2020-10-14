@@ -47,6 +47,15 @@ context VerifyAndConvertInput do
           # Assert 
           expect(result).to eq(false)
         end 
+        it "when given negative numbers, returns false" do 
+          # Arrange
+          move = "-1, -1"
+          get_input = described_class.new
+          # Act
+          result = get_input.verify_move?(move)
+          # Assert 
+          expect(result).to eq(false)
+        end 
       end 
       describe "#convert_move" do
         it "receives valid move and converts to array" do
@@ -123,6 +132,19 @@ context VerifyAndConvertInput do
           good_move = [2, 2]
           # Act
           result = verify_input.out_of_grid?(good_move)
+          # Assert 
+          expect(result).to eq(false)
+        end
+      end
+      describe "#space_taken?" do
+        it "returns false if space is empty" do
+          # Arrange  
+          verify_input = described_class.new
+          good_move = [2, 2]
+          game_state = [['', '', ''],['', '', ''],['', '', '']]
+
+          # Act
+          result = verify_input.space_taken?(good_move,game_state)
           # Assert 
           expect(result).to eq(false)
         end

@@ -17,7 +17,8 @@ class VerifyAndConvertInput
     end
 
     def out_of_grid?(move)
-        true
+        return true if move[0]> 2 || move[1] > 2
+        false
     end
 
 
