@@ -95,26 +95,7 @@ context VerifyAndConvertInput do
           expect(result).to eq([0,3])
         end
       end
-      describe "#take_and_return_user_input" do
-        it "returns a valid move given a valid string" do
-          # Arrange  
-          verify_input = described_class.new
-          good_move = "2, 5"
-          # Act
-          result = verify_input.take_and_return_user_input(good_move)
-          # Assert 
-          expect(result).to eq([2,5])
-        end
-        it "returns a false given an invalid string" do
-          # Arrange  
-          verify_input = described_class.new
-          good_move = "2, 50"
-          # Act
-          result = verify_input.take_and_return_user_input(good_move)
-          # Assert 
-          expect(result).to eq(false)
-        end
-      end
+      
       describe "#out_of_grid?" do
         it "returns true if move is outside of grid" do
           # Arrange  
@@ -159,6 +140,27 @@ context VerifyAndConvertInput do
           result = verify_input.space_taken?(bad_move,game_state)
           # Assert 
           expect(result).to eq(true)
+        end
+      end
+
+      describe "#take_and_return_user_input" do
+        it "returns a valid move given a valid string" do
+          # Arrange  
+          verify_input = described_class.new
+          good_move = "2, 5"
+          # Act
+          result = verify_input.take_and_return_user_input(good_move)
+          # Assert 
+          expect(result).to eq([2,5])
+        end
+        it "returns a false given an invalid string" do
+          # Arrange  
+          verify_input = described_class.new
+          good_move = "2, 50"
+          # Act
+          result = verify_input.take_and_return_user_input(good_move)
+          # Assert 
+          expect(result).to eq(false)
         end
       end
 
