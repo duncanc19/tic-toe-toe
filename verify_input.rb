@@ -21,6 +21,10 @@ class VerifyAndConvertInput
         false
     end
 
+    def space_taken?(move, game_state)
+        false
+    end
+
 
     # def invalid_move?(row,col)
     #     return true if row > 2 || col > 2

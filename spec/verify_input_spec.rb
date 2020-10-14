@@ -148,5 +148,17 @@ context VerifyAndConvertInput do
           # Assert 
           expect(result).to eq(false)
         end
+
+        it "returns true if space is taken" do
+          # Arrange  
+          verify_input = described_class.new
+          bad_move = [2, 2]
+          game_state = [['', '', ''],['', '', ''],['', '', 'x']]
+
+          # Act
+          result = verify_input.space_taken?(bad_move,game_state)
+          # Assert 
+          expect(result).to eq(true)
+        end
       end
 end
