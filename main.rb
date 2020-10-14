@@ -1,13 +1,10 @@
-Dir["*.rb"].each {|file| require_relative file if file != "main.rb" }
-# require_relative "one_turn"
-
 
 class Main
-    def play_game(present, game, turn, get_input)
+    def play_game(present, game, verify, get_input)
         # present.output_message_to_command_line_newline(Messages.message_hash(:welcome))
         present.show_grid(game)
         while (!CheckDraw.check_draw(game)) do
-            turn.get_valid_move(get_input, game)
+            turn(get_input, verify, game)
             present.show_grid(game)
             break if CheckWin.check_win(game)
             game.next_player
@@ -22,9 +19,3 @@ class Main
         game.add_move(move[0], move[1])
     end
 end
-# present = Present.new
-# game = Game.new
-# get_input = GetInput.new
-# main = Main.new
-
-# main.play_game(present, game, turn, get_input)
