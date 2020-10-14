@@ -116,5 +116,15 @@ context VerifyAndConvertInput do
           # Assert 
           expect(result).to eq(true)
         end
+
+        it "returns false if move is inside of grid" do
+          # Arrange  
+          verify_input = described_class.new
+          good_move = [2, 2]
+          # Act
+          result = verify_input.out_of_grid?(good_move)
+          # Assert 
+          expect(result).to eq(false)
+        end
       end
 end

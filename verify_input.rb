@@ -16,6 +16,10 @@ class VerifyAndConvertInput
         convert_move(move)
     end
 
+    def out_of_grid?(move)
+        true
+    end
+
 
     # def invalid_move?(row,col)
     #     return true if row > 2 || col > 2
