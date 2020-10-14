@@ -1,7 +1,11 @@
 class VerifyAndConvertInput 
 
+    def take_and_return_user_input(move)
+        return false if !correct_format?(move) 
+        convert_move(move)
+    end
 
-    def verify_move?(move)
+    def correct_format?(move)
         move.match?(/\A\d\D*\d\z/)
     end 
 
@@ -11,26 +15,18 @@ class VerifyAndConvertInput
         [row_number,col_number]
     end 
 
-    def take_and_return_user_input(move)
-        return false if !verify_move?(move) 
-        convert_move(move)
-    end
-
     def out_of_grid?(move)
         return true if move[0]> 2 || move[1] > 2
         false
     end
 
     def space_taken?(move, game_state)
+        row = move[0]
+        col = move[1]
+        return true if game_state[row][col] == 'o' || game_state[row][col] == 'x' 
         false
     end
 
-
-    # def invalid_move?(row,col)
-    #     return true if row > 2 || col > 2
-    #     return true if @game_state[row][col] == 'o' || @game_state[row][col] == 'x' 
-    #     false
-    #  end
     def get_valid_move(get_input, game)
         valid_move = false
         while !valid_move

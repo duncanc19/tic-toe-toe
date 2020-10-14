@@ -1,13 +1,13 @@
 require_relative "../verify_input"
 
 context VerifyAndConvertInput do
-    describe "#verify_move?" do
+    describe "#correct_format?" do
         it "when given a random string returns false" do 
           # Arrange
           move = "dakgfjelufhkbalekd"
           get_input = described_class.new
           # Act
-          result = get_input.verify_move?(move)
+          result = get_input.correct_format?(move)
           # Assert 
           expect(result).to eq(false)
         end
@@ -16,7 +16,7 @@ context VerifyAndConvertInput do
             move = "2,2"
             get_input = described_class.new
             # Act
-            result = get_input.verify_move?(move)
+            result = get_input.correct_format?(move)
             # Assert 
             expect(result).to eq(true)
         end 
@@ -25,7 +25,7 @@ context VerifyAndConvertInput do
             move = "0 2"
             get_input = described_class.new
             # Act
-            result = get_input.verify_move?(move)
+            result = get_input.correct_format?(move)
             # Assert 
             expect(result).to eq(true)
         end 
@@ -34,7 +34,7 @@ context VerifyAndConvertInput do
             move = "1:2"
             get_input = described_class.new
             # Act
-            result = get_input.verify_move?(move)
+            result = get_input.correct_format?(move)
             # Assert 
             expect(result).to eq(true)
         end 
@@ -43,7 +43,7 @@ context VerifyAndConvertInput do
           move = "10,20"
           get_input = described_class.new
           # Act
-          result = get_input.verify_move?(move)
+          result = get_input.correct_format?(move)
           # Assert 
           expect(result).to eq(false)
         end 
@@ -52,7 +52,7 @@ context VerifyAndConvertInput do
           move = "-1, -1"
           get_input = described_class.new
           # Act
-          result = get_input.verify_move?(move)
+          result = get_input.correct_format?(move)
           # Assert 
           expect(result).to eq(false)
         end 
@@ -161,4 +161,5 @@ context VerifyAndConvertInput do
           expect(result).to eq(true)
         end
       end
+
 end
