@@ -143,15 +143,16 @@ context VerifyAndConvertInput do
         end
       end
 
-      describe "#take_and_return_user_input" do
-        it "returns a valid move given a valid string" do
+      describe "#verify_and_convert_move" do
+        it "returns a valid move given a valid string on an empty game" do
           # Arrange  
           verify_input = described_class.new
-          good_move = "2, 5"
+          good_move = "2, 2"
+          game_state = [['', '', ''],['', '', ''],['', '', '']]
           # Act
-          result = verify_input.take_and_return_user_input(good_move)
+          result = verify_input.verify_and_convert_move(good_move,game_state)
           # Assert 
-          expect(result).to eq([2,5])
+          expect(result).to eq([2,2])
         end
         it "returns a false given an invalid string" do
           # Arrange  
