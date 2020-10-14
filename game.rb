@@ -27,8 +27,8 @@ class Game
     add_move(@verified_move[0], @verified_move[1])
   end
 
-  def verify_and_format_move(move)
-    verify = VerifyAndConvertInput.new
-    @verified_move = verify.take_and_return_user_input(move)
-  end
+  # def verify_and_format_move(move)
+  #   verify = VerifyAndConvertInput.new
+  #   @verified_move = verify.take_and_return_user_input(move)
+  # end
 end

@@ -1,9 +1,9 @@
 class VerifyAndConvertInput 
 
-    def take_and_return_user_input(move)
-        return false if !correct_format?(move) 
-        convert_move(move)
-    end
+    # def take_and_return_user_input(move)
+    #     return false if !correct_format?(move) 
+    #     convert_move(move)
+    # end
 
     def verify_and_convert_move(move, game_state)
         return false if !correct_format?(move) 
