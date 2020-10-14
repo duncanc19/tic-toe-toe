@@ -1,10 +1,8 @@
 require_relative "constants_test"
 require_relative "../game"
 require_relative "../present"
+require_relative "../main"
 
-# ********************************** BAD TEST ********************************
-# require_relative "../main"
-# ********************************** BAD TEST ********************************
 
 # When: a new game starts
 # Then: display an empty grid
@@ -118,9 +116,6 @@ describe "the user gives invalid moves" do
         expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
         # Act 
         main.turn(get_input, verify, game)
-        # move = get_input.get_move
-        # converted_move = verify.verify_and_convert_move(move, game.game_state)
-        # game.add_move(converted_move[0], converted_move[1])
         # Assert (in {})
         expect { present.show_grid(game) }
         .to output(expected_string)
