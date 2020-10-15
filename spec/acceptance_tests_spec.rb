@@ -80,10 +80,11 @@ describe "tic tac toe game" do
     end
 
 
+
+    describe "whose turn it is" do
     # Given: a new game
     # When: the game starts 
     # Then: who's turn it is is shown
-    describe "whose turn it is" do
         it 'it shows players turn before asking for input' do
             # Arrange
             allow(@get_input).to receive(:gets).and_return("quit")
@@ -93,7 +94,22 @@ describe "tic tac toe game" do
             .to output(a_string_including(expected_string))
             .to_stdout_from_any_process
         end
+
+    # Given: an ongoing game
+    # When: player 1 has played a move
+    # Then: player 2 is asked for a move
+        it 'it shows players turn before asking for input' do
+            # Arrange
+            allow(@get_input).to receive(:gets).and_return("0,2","quit")
+            expected_string = TEST_PLAYER2_TURN
+            # Assert (Act in {})
+            expect { @main.play_game(@present, @game, @verify, @get_input) }
+            .to output(a_string_including(expected_string))
+            .to_stdout_from_any_process
+        end
     end
+
+    
 
     # Given: the player is aked for a move
     # When: the player gives a valid move
