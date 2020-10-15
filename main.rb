@@ -6,7 +6,7 @@ class Main
         while (!CheckDraw.check_draw(game)) do
             present.show_message(Messages.message_hash(:enter_move))
             begin
-                turn(get_input, verify, game)
+                turn(get_input, verify, game, present)
             rescue StandardError => e
                 puts e.message
                 break
@@ -17,12 +17,13 @@ class Main
         end
     end
 
-    def turn(get_input, verify, game)
+    def turn(get_input, verify, game, present)
         move = false
         while !move do
             move = get_input.get_move
             raise "Game has ended" if move == 'quit'
             move = verify.verify_and_convert_move(move, game.game_state)
+            present.show_message(Messages.message_hash(:invalid_move)) if !move
         end 
         game.add_move(move[0], move[1])
     end

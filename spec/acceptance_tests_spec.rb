@@ -80,21 +80,18 @@ describe "tic tac toe game" do
     end
 
 
-    # Given: a game
-    # When: the first player makes a move
-    # Then: the next player is asked for a move
-    # And: has the symbol 'o'
-    describe 'after first player turn, current player becomes second player ' do
-        it 'has the symbol "o"' do
+    # Given: a new game
+    # When: the game starts 
+    # Then: who's turn it is is shown
+    describe "whose turn it is" do
+        it 'it shows players turn before asking for input' do
             # Arrange
-            game = Game.new
-
-            # Act
-            game.add_move(0,0)
-            game.next_player
-
-            # Assert
-            expect(game.current_player).to eq("o")
+            allow(@get_input).to receive(:gets).and_return("quit")
+            expected_string = TEST_PLAYER1_TURN
+            # Assert (Act in {})
+            expect { @main.play_game(@present, @game, @verify, @get_input) }
+            .to output(a_string_including(expected_string))
+            .to_stdout_from_any_process
         end
     end
 
@@ -132,7 +129,7 @@ describe "tic tac toe game" do
             allow(get_input).to receive(:gets).and_return("blah", "0,2")
             expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
             # Act 
-            main.turn(get_input, verify, game)
+            main.turn(get_input, verify, game, present)
             # Assert (in {})
             expect { present.show_grid(game) }
             .to output(expected_string)
