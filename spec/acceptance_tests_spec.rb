@@ -36,8 +36,8 @@ describe "tic tac toe game" do
 
     # When: A game has started 
     # Then: the player is asked for a move
-    describe 'a player makes a valid move' do
-        it 'move is shown on the grid' do
+    describe 'when game is started' do
+        it 'asks user for a move' do
             # Arrange
             allow(@get_input).to receive(:gets).and_return("quit")
             expected_string = TEST_DEFAULT_INPUT_REQUEST
@@ -67,6 +67,17 @@ describe "tic tac toe game" do
     # When: A player makes an invalid move
     # Then: the move is rejected
     # And: the player is asked for another move
+    describe 'a player makes an invalid move' do
+        it 'shows invalid_move message' do
+            # Arrange
+            allow(@get_input).to receive(:gets).and_return("0,6", "quit")
+            expected_string = TEST_WRONG_INPUT
+            # Assert (Act in {})
+            expect { @main.play_game(@present, @game, @verify, @get_input) }
+            .to output(a_string_including(expected_string))
+            .to_stdout_from_any_process
+        end
+    end
 
 
     # Given: a game
