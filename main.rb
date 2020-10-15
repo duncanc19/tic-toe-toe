@@ -4,7 +4,11 @@ class Main
         present.show_message(Messages.message_hash(:welcome))
         present.show_grid(game)
         while (!CheckDraw.check_draw(game)) do
+            current_player_symbol = present.player_symbol(game.current_player)
+            
+            present.show_message(Messages.player_turn_message(current_player_symbol))
             present.show_message(Messages.message_hash(:enter_move))
+            
             begin
                 turn(get_input, verify, game, present)
             rescue StandardError => e

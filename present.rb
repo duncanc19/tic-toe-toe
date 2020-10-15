@@ -25,4 +25,9 @@ class Present
         puts message
     end
 
+    def player_symbol(player) 
+        return PLAYER1_SYMBOL if player == 'x'
+        return PLAYER2_SYMBOL if player == 'o' 
+    end
+
 end 
