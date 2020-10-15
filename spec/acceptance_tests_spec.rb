@@ -12,6 +12,20 @@ describe "tic tac toe game" do
         @verify = VerifyAndConvertInput.new
     end
 
+    describe "the user quits the game early" do
+        it "shows end game message user types 'quit'" do
+            # Arrange 
+            expected_string = /Game has ended/
+            allow(@get_input).to receive(:gets).and_return("quit")
+            # Act 
+            
+            # Assert (in {})
+            expect {@main.play_game(@present, @game, @verify, @get_input)}
+            .to output(expected_string)
+            .to_stdout_from_any_process 
+        end
+    end
+
     # When: a new game starts
     # Then: display welcome message
     # And: display an empty grid
@@ -109,49 +123,35 @@ describe "tic tac toe game" do
         end
     end
 
-    
+    describe "the user gives an invalid move then a valid move" do
+        it "shows valid move on the board" do
+            # Arrange 
+            allow(@get_input).to receive(:gets).and_return("blah", "0,2", "quit")
+            expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
+            # Assert (Act in {})
+            expect { @main.play_game(@present, @game, @verify, @get_input) }
+            .to output(a_string_including(expected_string))
+            .to_stdout_from_any_process
+        end
+    end
 
-    # Given: the player is aked for a move
-    # When: the player gives a valid move
-    # Then: the move is accepted
-    # And: Shown on the board in CL 
-    describe "the user gives a valid move" do 
-        it "the board is updated and shown" do 
-            # Arrange 
-            game = Game.new
-            present = Present.new
-            get_input = GetInput.new
-            verify = VerifyAndConvertInput.new
-            allow(get_input).to receive(:gets) {"0,2"}
-            expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
-            # Act 
-            move = get_input.get_move
-            converted_move = verify.verify_and_convert_move(move, game.game_state)
-            game.add_move(converted_move[0], converted_move[1])
-            # Assert
-            expect { present.show_grid(game) }
-            .to output(expected_string)
-            .to_stdout_from_any_process
-        end
-    end
-    describe "the user gives invalid moves" do
-        it "receives an invalid(wrong format) move, then a valid move so shows valid move on the board" do
-            # Arrange 
-            main = Main.new
-            game = Game.new
-            present = Present.new
-            get_input = GetInput.new
-            verify = VerifyAndConvertInput.new
-            allow(get_input).to receive(:gets).and_return("blah", "0,2")
-            expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
-            # Act 
-            main.turn(get_input, verify, game, present)
-            # Assert (in {})
-            expect { present.show_grid(game) }
-            .to output(expected_string)
-            .to_stdout_from_any_process
-        end
-    end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     describe "the user quits the game early" do
         it "shows end game message user types 'quit'" do
             # Arrange 
@@ -159,43 +159,30 @@ describe "tic tac toe game" do
             allow(@get_input).to receive(:gets).and_return("quit")
             # Act 
             
-        # Assert (in {})
-        expect {@main.play_game(@present, @game, @verify, @get_input)}
+            # Assert (in {})
+            expect {@main.play_game(@present, @game, @verify, @get_input)}
             .to output(expected_string)
             .to_stdout_from_any_process 
         end
     end
-        # it "receives an invalid(game rules) move, then a valid move so shows valid move on the board" do
-        #     # Arrange 
-        #     game = Game.new
-        #     present = Present.new
-        #     get_input = GetInput.new
-        #     verify = VerifyAndConvertInput.new
-        #     allow(get_input).to receive(:gets).and_return("0,8", "0,2")
-        #     expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
-        #     # Act 
-        #     verify.get_valid_move(get_input, game)
-        #     # Assert (in {})
-        #     expect { present.show_grid(game) }
-        #     .to output(expected_string)
-        #     .to_stdout_from_any_process
-        # end
-        # it "receives both types of invalid move, then a valid move so shows valid move on the board" do
-        #     # Arrange 
-        #     game = Game.new
-        #     present = Present.new
-        #     get_input = GetInput.new
-        #     verify = VerifyAndConvertInput.new
-        #     allow(get_input).to receive(:gets).and_return("blah","0,8", "0,2")
-        #     expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
-        #     # Act 
-        #     verify.get_valid_move(get_input, game)
-        #     # Assert (in {})
-        #     expect { present.show_grid(game) }
-        #     .to output(expected_string)
-        #     .to_stdout_from_any_process
-        # end
 
+    # # Given: A new game starts 
+    # # When: a user gives several moves 
+    # # Then: the board is output each time
+    # describe "a user gives several moves" do 
+    #     it "displays the board after each move" do
+    #         # Arrange 
+            
+    #         allow(@get_input).to receive(:gets).and_return("quit")
+    #         # Act 
+            
+    #         # Assert (in {})
+    #         expect {@main.play_game(@present, @game, @verify, @get_input)}
+    #         .to output(expected_string)
+    #         .to_stdout_from_any_process 
+    #     end
+    # end
+        
     # ********************************** BAD TEST ********************************
 
     # # Given: A new game starts 
