@@ -16,8 +16,4 @@ class Game
     @current_player = player_array[@current_player]
   end 
 
-  # def play_move
-  #   add_move(@verified_move[0], @verified_move[1])
-  # end
-
 end
