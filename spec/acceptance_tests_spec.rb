@@ -137,7 +137,7 @@ describe "tic tac toe game" do
 
     # Given: an ongoing game
     # When: several moves are played
-    # The board is updated and shown
+    # Then: The board is updated and shown
     describe "players give several moves" do
         it "displays the updated board" do
             # Arrange 
@@ -145,6 +145,23 @@ describe "tic tac toe game" do
             expected_string =   "#{TEST_PLAYER2}#{TEST_EMPTY}#{TEST_PLAYER1}\n"\
                                 "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n"\
                                 "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER2}\n"
+            # Assert (Act in {})
+            expect { @main.play_game(@present, @game, @verify, @get_input) }
+            .to output(a_string_including(expected_string))
+            .to_stdout_from_any_process
+        end
+    end
+
+    # Given: an ongoing game
+    # When: player 1 makes a winning move
+    # Then: The player 1 win message is shown
+    # And: game ends
+    describe "player 1 makes a winning move" do
+        it "shows player 1 win message" do
+            # Arrange 
+            allow(@get_input).to receive(:gets).and_return("00", "10", "01", "11", "02")
+            expected_string = TEST_PLAYER1_WIN
+            
             # Assert (Act in {})
             expect { @main.play_game(@present, @game, @verify, @get_input) }
             .to output(a_string_including(expected_string))
