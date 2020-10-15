@@ -34,19 +34,19 @@ describe "tic tac toe game" do
         end
     end
 
-    # Given: a game
-    # When: the game is started 
-    # Then: the welcome message is shown
-    # And: the empty grid
-
-
-
-
-    # Given: A grid
-    # When: A player makes an invalid move
-    # Then: the move is rejected
-    # And: the player is asked for another move
-
+    # When: A game has started 
+    # Then: the player is asked for a move
+    describe 'a player makes a valid move' do
+        it 'move is shown on the grid' do
+            # Arrange
+            allow(@get_input).to receive(:gets).and_return("quit")
+            expected_string = TEST_DEFAULT_INPUT_REQUEST
+            # Assert (Act in {})
+            expect { @main.play_game(@present, @game, @verify, @get_input) }
+            .to output(a_string_including(expected_string))
+            .to_stdout_from_any_process
+        end
+    end
 
     # Given: A grid
     # When: A player makes an valid move
@@ -54,17 +54,19 @@ describe "tic tac toe game" do
     describe 'a player makes a valid move' do
         it 'move is shown on the grid' do
             # Arrange
-            presenter = Present.new
-            game = Game.new
-            # Act
-            result = game.add_move(0,0)
+            allow(@get_input).to receive(:gets).and_return("0,0", "quit")
             expected_string = "#{TEST_PLAYER1}#{TEST_EMPTY}#{TEST_EMPTY}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
-            # Assert
-            expect { presenter.show_grid(game) }
-            .to output(expected_string)
+            # Assert (Act in {})
+            expect { @main.play_game(@present, @game, @verify, @get_input) }
+            .to output(a_string_including(expected_string))
             .to_stdout_from_any_process
         end
     end
+
+    # Given: A grid
+    # When: A player makes an invalid move
+    # Then: the move is rejected
+    # And: the player is asked for another move
 
 
     # Given: a game
