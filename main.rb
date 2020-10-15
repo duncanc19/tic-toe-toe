@@ -3,7 +3,7 @@ class Main
     def play_game(present, game, verify, get_input)
         present.show_message(Messages.message_hash(:welcome))
         present.show_grid(game)
-        while (!CheckDraw.check_draw(game)) do
+        loop do
             current_player_symbol = present.player_symbol(game.current_player)
             
             present.show_message(Messages.player_turn_message(current_player_symbol))
@@ -16,13 +16,18 @@ class Main
                 break
             end
             present.show_grid(game)
+            
             if CheckWin.check_win(game)
                 present.show_message(Messages.winning_message(current_player_symbol))
                 break 
             end
+            if CheckDraw.check_draw(game)
+                present.show_message(Messages.message_hash(:draw))
+                break 
+            end
             game.next_player
         end
-        present.show_message(Messages.message_hash(:draw))
+        
     end
 
 
