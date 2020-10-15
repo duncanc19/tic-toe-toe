@@ -135,36 +135,39 @@ describe "tic tac toe game" do
         end
     end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    describe "the user quits the game early" do
-        it "shows end game message user types 'quit'" do
+    # Given: an ongoing game
+    # When: several moves are played
+    # The board is updated and shown
+    describe "players give several moves" do
+        it "displays the updated board" do
             # Arrange 
-            expected_string = /Game has ended/
-            allow(@get_input).to receive(:gets).and_return("quit")
-            # Act 
-            
-            # Assert (in {})
-            expect {@main.play_game(@present, @game, @verify, @get_input)}
-            .to output(expected_string)
-            .to_stdout_from_any_process 
+            allow(@get_input).to receive(:gets).and_return( "0,2", "0 0", "1 2", "2 2", "quit")
+            expected_string =   "#{TEST_PLAYER2}#{TEST_EMPTY}#{TEST_PLAYER1}\n"\
+                                "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n"\
+                                "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER2}\n"
+            # Assert (Act in {})
+            expect { @main.play_game(@present, @game, @verify, @get_input) }
+            .to output(a_string_including(expected_string))
+            .to_stdout_from_any_process
         end
     end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     # # Given: A new game starts 
     # # When: a user gives several moves 
