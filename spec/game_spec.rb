@@ -29,45 +29,6 @@ context Game do
             end 
         end
     end
-    describe "when row is out of bounds" do
-        it "returns false" do 
-            # Arrange
-            game = Game.new
-            # Act
-            result = game.add_move(6,0)
-            # Assert
-            expect(result).to eq(false)
-        end 
-    end
-    describe "when column is out of bounds" do
-        it "returns false" do 
-            # Arrange
-            game = Game.new
-            # Act
-            result = game.add_move(0,3)
-            # Assert
-            expect(result).to eq(false)
-        end 
-    end
-
-    cell_occupied_hash = {
-            top_left: [0,0],
-            middle_left: [0,2]
-    }
-
-    cell_occupied_hash.each do |key, value|
-        describe "when #{key} cell is already occupied" do
-          it "returns false" do
-            # Arrange
-            game = Game.new
-            game.add_move(value[0], value[1])
-            # Act
-            result = game.add_move(value[0],value[1])
-            # Assert
-            expect(result).to eq(false)
-          end
-        end
-    end
 
     describe "second player makes move" do
       it "adds 'o' to game state" do
@@ -81,23 +42,6 @@ context Game do
         expect(game.game_state[0][1]).to eq('o')
       end
     end
-
-    describe "invalid move when occupied with 'o'" do
-      it "returns false" do
-        # Arrange
-        game = Game.new
-        game.add_move(0,0)
-        game.next_player
-        game.add_move(0,1)
-        game.next_player
-        # Act
-        result = game.add_move(0,1)
-        # Assert
-        expect(result).to eq(false)
-      end
-    end
-
-
 
     describe "#next_player" do
       it "first current player is 'x'" do
@@ -126,15 +70,6 @@ context Game do
     end 
   
     describe "#play_move" do
-      it "returns false when move is invalid as per game.add_move" do
-        # Arrange
-        game = Game.new
-        game.verified_move = [0,5]
-         # Act
-        result = game.play_move
-        # Assert  
-        expect(result).to eq(false)
-      end
       it "returns true when move is valid" do
         # Arrange
         game = Game.new
