@@ -1,7 +1,7 @@
 
 class Main
     def play_game(present, game, verify, get_input)
-        # present.output_message_to_command_line_newline(Messages.message_hash(:welcome))
+        present.show_message(Messages.message_hash(:welcome))
         present.show_grid(game)
         while (!CheckDraw.check_draw(game)) do
             begin

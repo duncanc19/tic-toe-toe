@@ -21,4 +21,8 @@ class Present
         @grid.join("\n")
     end 
 
+    def show_message(message)
+        puts message
+    end
+
 end 

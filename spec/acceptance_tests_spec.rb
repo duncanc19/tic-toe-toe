@@ -13,19 +13,24 @@ describe "tic tac toe game" do
     end
 
     # When: a new game starts
-    # Then: display an empty grid
+    # Then: display welcome message
+    # And: display an empty grid
     describe 'a new game starts' do
         it 'displays an empty grid on command line' do
             # Arrange
-            presenter = Present.new
-            game = Game.new
-
+            allow(@get_input).to receive(:gets).and_return("quit")
             # Act
-            expected_string = "#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
+            empty_grid_string = "#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
+            welcome_message_string=TEST_WELCOME_MESSAGE 
             # Assert
-            expect { presenter.show_grid(game) }
-            .to output(expected_string)
+            expect { @main.play_game(@present, @game, @verify, @get_input) }
+            .to output(a_string_including(empty_grid_string))
             .to_stdout_from_any_process
+            
+            expect { @main.play_game(@present, @game, @verify, @get_input) }
+            .to output(a_string_including(welcome_message_string))
+            .to_stdout_from_any_process
+
         end
     end
 
