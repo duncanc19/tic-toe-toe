@@ -180,6 +180,23 @@ describe "tic tac toe game" do
         end
     end
 
+    # Given: an ongoing game
+    # When: the final possible move is played and is not a win
+    # Then: The draw message is shown
+    # And: Game ends
+    describe "it's a draw" do
+        it "shows the draw message" do
+            # Arrange 
+            allow(@get_input).to receive(:gets).and_return("11", "00", "02", "20", "10", "12", "01", "21", "22")
+            expected_string = TEST_DRAW
+            
+            # Assert (Act in {})
+            expect { @main.play_game(@present, @game, @verify, @get_input) }
+            .to output(a_string_including(expected_string))
+            .to_stdout_from_any_process
+        end
+    end
+
 
 
 
