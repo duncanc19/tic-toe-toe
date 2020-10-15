@@ -68,29 +68,5 @@ context Game do
         expect(game.current_player).to eq('x')
       end 
     end 
-  
-    describe "#play_move" do
-      it "returns true when move is valid" do
-        # Arrange
-        game = Game.new
-        game.verified_move = [0,2]
-         # Act
-        result = game.play_move
-        # Assert  
-        expect(result).to be_truthy
-      end
-  
-      it "updates game.game_state when move is in empty square" do
-        # Arrange
-        game = Game.new
-        game.verified_move = [0,2]
-        expected_gamestate = [['','', 'x'],['','', ''],['','', '']]
-        # Act
-        result = game.play_move
-        # Assert  
-        expect(game.game_state).to eq(expected_gamestate)
-      end
-    end
-
 end
 

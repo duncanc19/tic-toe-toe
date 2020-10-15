@@ -31,18 +31,7 @@ end
 # When: A player makes an invalid move
 # Then: the move is rejected
 # And: the player is asked for another move
-describe 'a player makes an invalid move' do
-    it 'rejects the move' do
-        # Arrange
-        game = Game.new
 
-        # Act
-        result = game.add_move(6,6)
-
-        # Assert
-        expect(result).to eq(false)
-    end
-end
 
 # Given: A grid
 # When: A player makes an valid move
