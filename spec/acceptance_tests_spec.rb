@@ -179,7 +179,6 @@ describe "tic tac toe game" do
             .to_stdout_from_any_process
         end
     end
-
     # Given: an ongoing game
     # When: the final possible move is played and is not a win
     # Then: The draw message is shown
@@ -193,6 +192,21 @@ describe "tic tac toe game" do
             # Assert (Act in {})
             expect { @main.play_game(@present, @game, @verify, @get_input) }
             .to output(a_string_including(expected_string))
+            .to_stdout_from_any_process
+        end
+    end
+
+    # Given: A winning game
+    # Then: The draw message is not shown
+    describe "somebody wins " do
+        it "it doesnt show the draw message" do
+            # Arrange 
+            allow(@get_input).to receive(:gets).and_return("00", "10", "01", "11", "22", "12")
+            expected_string = TEST_DRAW
+            
+            # Assert (Act in {})
+            expect { @main.play_game(@present, @game, @verify, @get_input) }
+            .not_to output(a_string_including(expected_string))
             .to_stdout_from_any_process
         end
     end

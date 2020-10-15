@@ -22,7 +22,9 @@ class Main
             end
             game.next_player
         end
+        present.show_message(Messages.message_hash(:draw))
     end
+
 
     def turn(get_input, verify, game, present)
         move = false
