@@ -8,7 +8,7 @@ class Main
             
             present.show_message(Messages.player_turn_message(current_player_symbol))
             present.show_message(Messages.message_hash(:enter_move))
-            
+
             begin
                 turn(get_input, verify, game, present)
             rescue StandardError => e
@@ -16,7 +16,10 @@ class Main
                 break
             end
             present.show_grid(game)
-            break if CheckWin.check_win(game)
+            if CheckWin.check_win(game)
+                present.show_message(Messages.winning_message(current_player_symbol))
+                break 
+            end
             game.next_player
         end
     end
