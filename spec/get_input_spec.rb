@@ -20,7 +20,14 @@ context GetInput do
       get_input = described_class.new
       allow(get_input).to receive(:gets) {"1\n"}
       
-      expect(get_input.get_game_type).to eq(1)    
+      expect(get_input.get_game_type).to eq("2-player game")    
+    end
+
+    it "receives game type = 2" do
+      get_input = described_class.new
+      allow(get_input).to receive(:gets) {"2\n"}
+      
+      expect(get_input.get_game_type).to eq("computer")    
     end
   end
 end
