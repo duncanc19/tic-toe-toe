@@ -16,8 +16,8 @@ class Main
                 # If computer = true and player = compter then computer turn
 
                 turn(get_input, verify, game, present)
-            rescue StandardError => e
-                puts e.message
+            rescue StandardError => game_ended
+                present.show_message(game_ended.message)
                 break
             end
             present.show_grid(game)
