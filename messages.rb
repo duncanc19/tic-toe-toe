@@ -4,7 +4,8 @@ class Messages
             welcome: "Welcome to SCARY tic tac toe!! 🎃 vs 👻 ",
             invalid_move: "Move invalid - please try again: ",
             enter_move: "Please enter your move: ",
-            draw: "😭😭😭 IT'S A DRAW! 😭😭😭"
+            draw: "😭😭😭 IT'S A DRAW! 😭😭😭",
+            game_ended: "Game has ended 😦"
         }
         messages_hash[message_name]
     end

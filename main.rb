@@ -40,7 +40,7 @@ class Main
         move = false
         while !move do
             move = get_input.get_move
-            raise "Game has ended" if move == 'quit'
+            raise Messages.message_hash(:game_ended) if move == 'quit'
             move = verify.verify_and_convert_move(move, game.game_state)
             present.show_message(Messages.message_hash(:invalid_move)) if !move
         end 
