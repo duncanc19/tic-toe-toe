@@ -32,6 +32,14 @@ context Computer do
                 # Assert
                 expect(move).to eq([1,1])
             end
+            it "returns the best move[2,0]" do
+                # Arrange
+                game_state = [['','x',''],['o','x','x'],['','o','']]
+                # Act
+                move = Computer.turn(game_state)
+                # Assert
+                expect(move).to eq([2,0])
+            end
         end
     end
 end
