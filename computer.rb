@@ -22,13 +22,6 @@ class Computer
         # print "#{winning_hash.max_by{|key,value| value}[0]} \n"
         #  "WINNING MOVE: #{winning_hash.max()[0]}"
     end
-    
-    # def self.turn(game_state)
-    #     if !winning_move(game_state)
-    #         minimum_move(game_state)
-    #     end
-    #     [1,1]
-    # end
 
     def self.maximum_move(game_state)
         maximizer = []
@@ -46,8 +39,8 @@ class Computer
                         maximizer << 0
                         # print "maximize row: #{[row_index,col_index]}, score: #{0}\n" 
                     else
-                        # print "maximize row: #{[row_index,col_index]}, score: #{minimum_move(temp_game.game_state)}\n" 
                         maximizer << minimum_move(temp_game.game_state)
+                        # print "maximize row: #{[row_index,col_index]}, score: #{minimum_move(temp_game.game_state)}\n" 
                     end
                 end
             end
@@ -71,8 +64,8 @@ class Computer
                         minimizer << 0
                         # print "minimize row: #{[row_index,col_index]}, score: #{0}\n"
                     else
-                        # print "minimize row: #{[row_index,col_index]}, score: #{maximum_move(temp_game.game_state)}\n" 
                         minimizer << maximum_move(temp_game.game_state)
+                        # print "minimize row: #{[row_index,col_index]}, score: #{maximum_move(temp_game.game_state)}\n"
                     end
                 end
             end
