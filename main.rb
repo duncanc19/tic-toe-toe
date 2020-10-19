@@ -4,7 +4,9 @@ class Main
         present.show_message(Messages.message_hash(:welcome))
         present.show_message(Messages.message_hash(:select_game))
 
-        # game_type = get_input.get_game_type
+        game_type = get_input.get_game_type
+        present.show_message(Messages.message_hash(:two_player_game)) if game_type == "2-player game"
+    
 
         present.show_grid(game)
         loop do

@@ -32,9 +32,9 @@ context GetInput do
 
     it "receives game type 1 after repeated bad inputs" do
       get_input = described_class.new
-      allow(get_input).to receive(:gets).and_return("hello\n","7\n","1\n")
+      allow(get_input).to receive(:gets).and_return("hello\n")
       
-      expect(get_input.get_game_type).to eq("2-player game")    
+      expect(get_input.get_game_type).to eq(false)    
     end
   end
 end

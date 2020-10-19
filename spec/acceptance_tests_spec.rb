@@ -16,7 +16,7 @@ describe "tic tac toe game" do
         it "shows end game message user types 'quit'" do
             # Arrange 
             expected_string = TEST_GAME_ENDED
-            allow(@get_input).to receive(:gets).and_return("quit")
+            allow(@get_input).to receive(:gets).and_return("1", "quit")
             # Act 
             
             # Assert (in {})
@@ -32,7 +32,7 @@ describe "tic tac toe game" do
     describe 'a new game starts' do
         it 'displays an empty grid on command line' do
             # Arrange
-            allow(@get_input).to receive(:gets).and_return("quit")
+            allow(@get_input).to receive(:gets).and_return("1", "quit")
             # Act
             empty_grid_string = "#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
             welcome_message_string=TEST_WELCOME_MESSAGE 
@@ -53,7 +53,7 @@ describe "tic tac toe game" do
     describe 'when game is started' do
         it 'asks user for a move' do
             # Arrange
-            allow(@get_input).to receive(:gets).and_return("quit")
+            allow(@get_input).to receive(:gets).and_return("1", "quit")
             expected_string = TEST_DEFAULT_INPUT_REQUEST
             # Assert (Act in {})
             expect { @main.play_game(@present, @game, @verify, @get_input) }
@@ -68,7 +68,7 @@ describe "tic tac toe game" do
     describe 'a player makes a valid move' do
         it 'move is shown on the grid' do
             # Arrange
-            allow(@get_input).to receive(:gets).and_return("0,0", "quit")
+            allow(@get_input).to receive(:gets).and_return("1", "0,0", "quit")
             expected_string = "#{TEST_PLAYER1}#{TEST_EMPTY}#{TEST_EMPTY}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
             # Assert (Act in {})
             expect { @main.play_game(@present, @game, @verify, @get_input) }
@@ -84,7 +84,7 @@ describe "tic tac toe game" do
     describe 'a player makes an invalid move' do
         it 'shows invalid_move message' do
             # Arrange
-            allow(@get_input).to receive(:gets).and_return("0,6", "quit")
+            allow(@get_input).to receive(:gets).and_return("1", "0,6", "quit")
             expected_string = TEST_WRONG_INPUT
             # Assert (Act in {})
             expect { @main.play_game(@present, @game, @verify, @get_input) }
@@ -101,7 +101,7 @@ describe "tic tac toe game" do
     # Then: who's turn it is is shown
         it 'it shows players turn before asking for input' do
             # Arrange
-            allow(@get_input).to receive(:gets).and_return("quit")
+            allow(@get_input).to receive(:gets).and_return("1", "quit")
             expected_string = TEST_PLAYER1_TURN
             # Assert (Act in {})
             expect { @main.play_game(@present, @game, @verify, @get_input) }
@@ -114,7 +114,7 @@ describe "tic tac toe game" do
     # Then: player 2 is asked for a move
         it 'it shows players turn before asking for input' do
             # Arrange
-            allow(@get_input).to receive(:gets).and_return("0,2","quit")
+            allow(@get_input).to receive(:gets).and_return("1", "0,2","quit")
             expected_string = TEST_PLAYER2_TURN
             # Assert (Act in {})
             expect { @main.play_game(@present, @game, @verify, @get_input) }
@@ -126,7 +126,7 @@ describe "tic tac toe game" do
     describe "the user gives an invalid move then a valid move" do
         it "shows valid move on the board" do
             # Arrange 
-            allow(@get_input).to receive(:gets).and_return("blah", "0,2", "quit")
+            allow(@get_input).to receive(:gets).and_return("1", "blah", "0,2", "quit")
             expected_string = "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
             # Assert (Act in {})
             expect { @main.play_game(@present, @game, @verify, @get_input) }
@@ -141,7 +141,7 @@ describe "tic tac toe game" do
     describe "players give several moves" do
         it "displays the updated board" do
             # Arrange 
-            allow(@get_input).to receive(:gets).and_return( "0,2", "0 0", "1 2", "2 2", "quit")
+            allow(@get_input).to receive(:gets).and_return("1", "0,2", "0 0", "1 2", "2 2", "quit")
             expected_string =   "#{TEST_PLAYER2}#{TEST_EMPTY}#{TEST_PLAYER1}\n"\
                                 "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER1}\n"\
                                 "#{TEST_EMPTY}#{TEST_EMPTY}#{TEST_PLAYER2}\n"
@@ -159,7 +159,7 @@ describe "tic tac toe game" do
     describe "a player makes a winning move" do
         it "shows player 1 win message" do
             # Arrange 
-            allow(@get_input).to receive(:gets).and_return("00", "10", "01", "11", "02")
+            allow(@get_input).to receive(:gets).and_return("1", "00", "10", "01", "11", "02")
             expected_string = TEST_PLAYER1_WIN
             
             # Assert (Act in {})
@@ -170,7 +170,7 @@ describe "tic tac toe game" do
 
         it "shows player 2 win message" do
             # Arrange 
-            allow(@get_input).to receive(:gets).and_return("00", "10", "01", "11", "22", "12")
+            allow(@get_input).to receive(:gets).and_return("1", "00", "10", "01", "11", "22", "12")
             expected_string = TEST_PLAYER2_WIN
             
             # Assert (Act in {})
@@ -186,7 +186,7 @@ describe "tic tac toe game" do
     describe "it's a draw" do
         it "shows the draw message" do
             # Arrange 
-            allow(@get_input).to receive(:gets).and_return("11", "00", "02", "20", "10", "12", "01", "21", "22")
+            allow(@get_input).to receive(:gets).and_return("1", "11", "00", "02", "20", "10", "12", "01", "21", "22")
             expected_string = TEST_DRAW
             
             # Assert (Act in {})
@@ -201,7 +201,7 @@ describe "tic tac toe game" do
     describe "somebody wins " do
         it "it doesnt show the draw message" do
             # Arrange 
-            allow(@get_input).to receive(:gets).and_return("00", "10", "01", "11", "22", "12")
+            allow(@get_input).to receive(:gets).and_return("1", "00", "10", "01", "11", "22", "12")
             expected_string = TEST_DRAW
             
             # Assert (Act in {})
@@ -216,7 +216,7 @@ describe "tic tac toe game" do
     describe "a game starts" do
         it "shows message for selection of 2 player or computer game" do 
             # Arrange 
-            allow(@get_input).to receive(:gets).and_return("quit")
+            allow(@get_input).to receive(:gets).and_return("1", "quit")
             expected_string = TEST_SELECT_GAME_TYPE
 
             # Assert (Act in {})
@@ -225,7 +225,7 @@ describe "tic tac toe game" do
             .to_stdout_from_any_process
         end
   
-        xit "gets input for selection of 2 player or computer game" do 
+        it "gets input for selection of 2 player or computer game" do 
             # Arrange 
             allow(@get_input).to receive(:gets).and_return("1", "quit")
             expected_string = TEST_2_PLAYER_GAME_SELECTED

@@ -6,7 +6,8 @@ class Messages
             enter_move: "Please enter your move: ",
             draw: "😭😭😭 IT'S A DRAW! 😭😭😭",
             game_ended: "Game has ended 😦",
-            select_game: "Choose game type: \n1 - two player game\n2 - play against computer"
+            select_game: "Choose game type: \n1 - two player game\n2 - play against computer",
+            two_player_game: "You've selected a two player game!"
         }
         messages_hash[message_name]
     end

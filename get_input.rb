@@ -7,5 +7,6 @@ class GetInput
       game_type = gets.chomp
       return "2-player game" if game_type == "1"
       return "computer" if game_type == "2"
+      false
     end
 end
