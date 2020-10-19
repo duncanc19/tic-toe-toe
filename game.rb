@@ -1,6 +1,6 @@
 class Game
 
-  attr_accessor :game_state, :current_player, :verified_move
+  attr_accessor :game_state, :current_player
   
   def initialize
     @game_state = [['', '', ''],['', '', ''],['', '', '']]
