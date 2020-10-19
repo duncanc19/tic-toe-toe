@@ -14,14 +14,15 @@ class Main
         present.show_grid(game)
         loop do
             current_player_symbol = present.player_symbol(game.current_player)
-            
+
             present.show_message(Messages.player_turn_message(current_player_symbol))
             present.show_message(Messages.message_hash(:enter_move))
-
+            
             begin
                 if game_type == :computer_game && game.current_player == 'o'
-                    computer_turn(game.game_state)
+                    computer_turn(game)
                 else
+                    
                     turn(get_input, verify, game, present)
                 end
             rescue StandardError => game_ended
@@ -56,8 +57,8 @@ class Main
     end
 
 
-    def computer_turn(game_state)
-        move = Computer.turn(game_state)
+    def computer_turn(game)
+        move = Computer.turn(game.game_state)
         game.add_move(move[0], move[1])
     end
 

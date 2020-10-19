@@ -1,5 +1,5 @@
 class Computer
-    def self.winning_move(game_state)
+    def self.turn(game_state)
         winning_hash = Hash.new
         game_state.each_with_index do |row, row_index|
             row.each_with_index do |square, col_index| 
