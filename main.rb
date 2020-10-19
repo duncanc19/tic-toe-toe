@@ -4,7 +4,6 @@ class Main
         present.show_message(Messages.message_hash(:welcome))
         present.show_message(Messages.message_hash(:select_game))
 
-        
         game_type = get_input.get_game_type
         while game_type.nil? do
             present.show_message(Messages.message_hash(:invalid_game_type))
@@ -20,9 +19,11 @@ class Main
             present.show_message(Messages.message_hash(:enter_move))
 
             begin
-                # If computer = true and player = compter then computer turn
-
-                turn(get_input, verify, game, present)
+                if game_type == :computer_game && game.current_player == 'o'
+                    computer_turn(game)
+                else
+                    turn(get_input, verify, game, present)
+                end
             rescue StandardError => game_ended
                 present.show_message(game_ended.message)
                 break
@@ -51,6 +52,12 @@ class Main
             move = verify.verify_and_convert_move(move, game.game_state)
             present.show_message(Messages.message_hash(:invalid_move)) if !move
         end 
+        game.add_move(move[0], move[1])
+    end
+
+
+    def computer_turn(game)
+        move = Computer.turn(game)
         game.add_move(move[0], move[1])
     end
 

@@ -2,6 +2,7 @@ require_relative "constants_test"
 require_relative "../game"
 require_relative "../present"
 require_relative "../main"
+require_relative "../computer"
 
 describe "tic tac toe game" do 
     before(:each) do
@@ -277,7 +278,7 @@ describe "tic tac toe game" do
     # Given: A computer game is selected
     # Then: The second move is played by computer
     describe "computer game is selected" do
-        it "displays a second move played by computer" do
+        xit "displays a second move played by computer" do
             # Arrange 
             allow(@get_input).to receive(:gets).and_return("2", "00", "quit")
             expected_string = "#{TEST_PLAYER1}#{TEST_EMPTY}#{TEST_EMPTY}\n#{TEST_EMPTY}#{TEST_PLAYER2}#{TEST_EMPTY}\n#{TEST_THREE_EMPTY}\n"
