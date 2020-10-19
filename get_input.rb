@@ -5,8 +5,8 @@ class GetInput
     end
     def get_game_type
       game_type = gets.chomp
-      return "2-player game" if game_type == "1"
-      return "computer" if game_type == "2"
+      return :two_player_game if game_type == "1"
+      return :computer_game if game_type == "2"
       false
     end
 end
