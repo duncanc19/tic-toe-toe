@@ -261,6 +261,17 @@ describe "tic tac toe game" do
             .to output(a_string_including(expected_string))
             .to_stdout_from_any_process
         end
+        it "shows bad game type message when given invalid game type" do 
+            # Arrange 
+            allow(@get_input).to receive(:gets).and_return("5", "2", "quit")
+            expected_string = TEST_INVALID_GAME_TYPE
+
+            # Assert (Act in {})
+            expect { @main.play_game(@present, @game, @verify, @get_input) }
+            .to output(a_string_including(expected_string))
+            .to_stdout_from_any_process
+        
+        end
     end
 
 end
