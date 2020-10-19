@@ -15,13 +15,13 @@ describe "tic tac toe game" do
     describe "the user quits the game early" do
         it "shows end game message user types 'quit'" do
             # Arrange 
-            expected_string = /Game has ended/
+            expected_string = TEST_GAME_ENDED
             allow(@get_input).to receive(:gets).and_return("quit")
             # Act 
             
             # Assert (in {})
             expect {@main.play_game(@present, @game, @verify, @get_input)}
-            .to output(expected_string)
+            .to output(a_string_including(expected_string))
             .to_stdout_from_any_process 
         end
     end
@@ -211,6 +211,6 @@ describe "tic tac toe game" do
         end
     end
 
-    
+
 
 end

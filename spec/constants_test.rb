@@ -10,3 +10,4 @@ TEST_PLAYER1_WIN = "🎉🥳🎉🥳🎉🥳 #{TEST_PLAYER1} WINS! 🎉🥳🎉�
 TEST_PLAYER2_WIN = "🎉🥳🎉🥳🎉🥳 #{TEST_PLAYER2} WINS! 🎉🥳🎉🥳🎉🥳"
 TEST_PLAYER1_TURN = "It's #{TEST_PLAYER1}'s turn! "
 TEST_PLAYER2_TURN = "It's #{TEST_PLAYER2}'s turn! "
+TEST_GAME_ENDED = "Game has ended 😦"
