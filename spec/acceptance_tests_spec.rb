@@ -225,7 +225,7 @@ describe "tic tac toe game" do
             .to_stdout_from_any_process
         end
   
-        it "gets input for selection of 2 player or computer game" do 
+        xit "gets input for selection of 2 player or computer game" do 
             # Arrange 
             allow(@get_input).to receive(:gets).and_return("1", "quit")
             expected_string = TEST_2_PLAYER_GAME_SELECTED

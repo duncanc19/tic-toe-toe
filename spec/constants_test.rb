@@ -11,4 +11,7 @@ TEST_PLAYER2_WIN = "🎉🥳🎉🥳🎉🥳 #{TEST_PLAYER2} WINS! 🎉🥳🎉�
 TEST_PLAYER1_TURN = "It's #{TEST_PLAYER1}'s turn! "
 TEST_PLAYER2_TURN = "It's #{TEST_PLAYER2}'s turn! "
 TEST_GAME_ENDED = "Game has ended 😦"
-TEST_SELECT_GAME_TYPE = "Choose game type: \n1 - two player game\n2 - play against computer"
+TEST_SELECT_GAME_TYPE = "Choose game type: \n"\
+                        "1 - two player game\n"\
+                        "2 - play against computer"
+TEST_2_PLAYER_GAME_SELECTED = "You selected a two player game!"
