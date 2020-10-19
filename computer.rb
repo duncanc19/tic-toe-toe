@@ -1,5 +1,5 @@
 class Computer
-    def self.turn(game_state)
+    def self.winning_move(game_state)
         game_state.each_with_index do |row, row_index|
             row.each_with_index do |square, col_index| 
                 if square == ''
@@ -10,5 +10,10 @@ class Computer
                 end
             end
         end
+        false
+    end
+    
+    def self.turn(game_state)
+        [1,1]
     end
 end
