@@ -7,6 +7,7 @@ class Main
         
         game_type = get_input.get_game_type
         while game_type.nil? do
+            present.show_message(Messages.message_hash(:invalid_game_type))
             game_type = get_input.get_game_type
         end
         present.show_message(Messages.message_hash(game_type))

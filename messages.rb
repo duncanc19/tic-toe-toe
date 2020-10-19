@@ -8,7 +8,8 @@ class Messages
             game_ended: "Game has ended 😦",
             select_game: "Choose game type: \n1 - two player game\n2 - play against computer",
             two_player_game: "You've selected a two player game!",
-            computer_game: "You've selected to play against the computer - good luck!"
+            computer_game: "You've selected to play against the computer - good luck!",
+            invalid_game_type: "The game type you entered was invalid, please enter 1 or 2"
         }
         messages_hash[message_name]
     end
