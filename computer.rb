@@ -1,5 +1,5 @@
 class Computer
-    def self.turn(_)
+    def self.turn(game_state)
 
     end
 end
