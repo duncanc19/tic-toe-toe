@@ -4,7 +4,11 @@ class Main
         present.show_message(Messages.message_hash(:welcome))
         present.show_message(Messages.message_hash(:select_game))
 
+        
         game_type = get_input.get_game_type
+        while game_type.nil? do
+            game_type = get_input.get_game_type
+        end
         present.show_message(Messages.message_hash(game_type))
 
         present.show_grid(game)

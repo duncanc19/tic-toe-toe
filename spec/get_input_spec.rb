@@ -34,7 +34,7 @@ context GetInput do
       get_input = described_class.new
       allow(get_input).to receive(:gets).and_return("hello\n")
       
-      expect(get_input.get_game_type).to eq(false)    
+      expect(get_input.get_game_type).to eq(nil)    
     end
   end
 end

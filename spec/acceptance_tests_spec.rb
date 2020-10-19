@@ -35,12 +35,18 @@ describe "tic tac toe game" do
             allow(@get_input).to receive(:gets).and_return("1", "quit")
             # Act
             empty_grid_string = "#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n#{TEST_THREE_EMPTY}\n"
-            welcome_message_string=TEST_WELCOME_MESSAGE 
             # Assert
             expect { @main.play_game(@present, @game, @verify, @get_input) }
             .to output(a_string_including(empty_grid_string))
             .to_stdout_from_any_process
-            
+        end
+
+        it 'displays welcome message on command line' do
+            # Arrange
+            allow(@get_input).to receive(:gets).and_return("1", "quit")
+            # Act
+            welcome_message_string=TEST_WELCOME_MESSAGE 
+            # Assert
             expect { @main.play_game(@present, @game, @verify, @get_input) }
             .to output(a_string_including(welcome_message_string))
             .to_stdout_from_any_process
@@ -238,6 +244,16 @@ describe "tic tac toe game" do
         it "gets input for selection of computer game" do 
             # Arrange 
             allow(@get_input).to receive(:gets).and_return("2", "quit")
+            expected_string = TEST_COMPUTER_GAME_SELECTED
+
+            # Assert (Act in {})
+            expect { @main.play_game(@present, @game, @verify, @get_input) }
+            .to output(a_string_including(expected_string))
+            .to_stdout_from_any_process
+        end
+        it "gets input for selection of computer game after bad inputs" do 
+            # Arrange 
+            allow(@get_input).to receive(:gets).and_return("5", "2", "quit")
             expected_string = TEST_COMPUTER_GAME_SELECTED
 
             # Assert (Act in {})
