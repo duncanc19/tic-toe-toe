@@ -211,6 +211,19 @@ describe "tic tac toe game" do
         end
     end
 
+    # Given: A new game 
+    # Then: the player is asked to choose 2 player or vs computer
+    describe "a game starts" do
+        it "asks for selection of 2 player or computer game" do 
+            # Arrange 
+            allow(@get_input).to receive(:gets).and_return("quit")
+            expected_string = TEST_SELECT_GAME_TYPE
 
+            # Assert (Act in {})
+            expect { @main.play_game(@present, @game, @verify, @get_input) }
+            .to output(a_string_including(expected_string))
+            .to_stdout_from_any_process
+        end
+    end
 
 end
