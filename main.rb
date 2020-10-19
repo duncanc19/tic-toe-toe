@@ -1,6 +1,9 @@
 
 class Main
     def play_game(present, game, verify, get_input)
+
+        # MESSAGE asking game type 
+
         present.show_message(Messages.message_hash(:welcome))
         present.show_grid(game)
         loop do
@@ -10,6 +13,8 @@ class Main
             present.show_message(Messages.message_hash(:enter_move))
 
             begin
+                # If computer = true and player = compter then computer turn
+
                 turn(get_input, verify, game, present)
             rescue StandardError => e
                 puts e.message
@@ -41,4 +46,6 @@ class Main
         end 
         game.add_move(move[0], move[1])
     end
+
+
 end
