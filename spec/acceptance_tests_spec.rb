@@ -225,10 +225,20 @@ describe "tic tac toe game" do
             .to_stdout_from_any_process
         end
   
-        it "gets input for selection of 2 player or computer game" do 
+        it "gets input for selection of 2 player" do 
             # Arrange 
             allow(@get_input).to receive(:gets).and_return("1", "quit")
             expected_string = TEST_2_PLAYER_GAME_SELECTED
+
+            # Assert (Act in {})
+            expect { @main.play_game(@present, @game, @verify, @get_input) }
+            .to output(a_string_including(expected_string))
+            .to_stdout_from_any_process
+        end
+        it "gets input for selection of computer game" do 
+            # Arrange 
+            allow(@get_input).to receive(:gets).and_return("2", "quit")
+            expected_string = TEST_COMPUTER_GAME_SELECTED
 
             # Assert (Act in {})
             expect { @main.play_game(@present, @game, @verify, @get_input) }

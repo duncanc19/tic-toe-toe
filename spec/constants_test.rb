@@ -15,3 +15,4 @@ TEST_SELECT_GAME_TYPE = "Choose game type: \n"\
                         "1 - two player game\n"\
                         "2 - play against computer"
 TEST_2_PLAYER_GAME_SELECTED = "You've selected a two player game!"
+TEST_COMPUTER_GAME_SELECTED = "You've selected to play against the computer - good luck!"
