@@ -3,5 +3,5 @@ language: ruby
 rvm:
   - 2.5.0
 before_install:
-  - yes | gem update --system --force
-  - gem install bundler
+  - bundler --version
+  - gem install bundler:1.16.1
