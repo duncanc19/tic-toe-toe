@@ -40,7 +40,7 @@ context Computer do
 
     describe ".turn" do
         describe "two moves away from winnning" do
-            xit "returns the best move[1,1]" do
+            it "returns the best move[1,1]" do
                 # Arrange
                 game_state = [['x','',''],['x','',''],['o','o','x']]
                 # Act
@@ -48,7 +48,7 @@ context Computer do
                 # Assert
                 expect(move).to eq([1,1])
             end
-            xit "returns the best move[2,0]" do
+            it "returns the best move[2,0]" do
                 # Arrange
                 game_state = [['','x',''],['o','x','x'],['','o','']]
                 # Act

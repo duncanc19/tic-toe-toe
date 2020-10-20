@@ -1,3 +1,6 @@
+require_relative "check_win"
+
+
 class Computer
     def self.winning_move(game_state)
         
@@ -19,7 +22,7 @@ class Computer
         if !winning_move(game_state)
             minimum_move(game_state)
         end
-        [1,1]
+        
     end
 
     def self.top_layer(game_state)
@@ -47,11 +50,17 @@ class Computer
                     temp_game.current_player = 'o'
                     temp_game.game_state = game_state.map(&:clone)
                     temp_game.add_move(row_index, col_index)
-                    return [row_index,col_index] if CheckWin.check_win(temp_game)
-                    minimum_move(temp_game.game_state)
+                    if CheckWin.check_win(temp_game)
+                        maximizer << 1 
+                    elsif CheckDraw.check_draw(temp_game)
+                        maximizer << 0 
+                    else
+                        maximizer << minimum_move(temp_game.game_state)
+                    end
                 end
             end
         end
+        return maximizer.max()
     end
 
     def self.minimum_move(game_state)
@@ -63,15 +72,17 @@ class Computer
                     temp_game.current_player = 'x'
                     temp_game.game_state = game_state.map(&:clone)
                     temp_game.add_move(row_index, col_index)
-                    if CheckWin(temp_game)
+                    if CheckWin.check_win(temp_game)
                         minimizer << -1 
+                    elsif CheckDraw.check_draw(temp_game)
+                        minimizer << 0 
                     else
                         minimizer << maximum_move(temp_game.game_state)
                     end
                 end
             end
         end
-        return minimizer.minimum()
+        return minimizer.min()
     end
 end
 
