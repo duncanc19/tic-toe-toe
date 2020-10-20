@@ -62,6 +62,16 @@ context Computer do
                 expect(move).to eq(-1)
             end
         end 
+        context "one move away from drawing game" do
+            it "returns 0 when given a drawable game" do
+                # Arrange
+                game_state = [['o','x','o'],['o','x','x'],['x','o','']]
+                # Act
+                move = Computer.minimum_move(game_state)
+                # Assert
+                expect(move).to eq(0)
+            end
+        end
     end
 
     describe ".turn" do
