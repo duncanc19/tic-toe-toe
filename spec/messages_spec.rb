@@ -56,5 +56,8 @@ context Messages do
             # Assert
             expect(result).to eq(TEST_PLAYER2_TURN) 
          end
+         it "is a bad test to test travis" do
+            expect(true).to eq(false)
+         end
     end
 end
