@@ -40,7 +40,25 @@ context Computer do
                 # Assert
                 expect(move).to eq(1)
             end
-        end 
+        end
+        context "two moves away from winnning" do
+            it "returns 1" do
+                # Arrange
+                game_state = [['x','',''],['x','',''],['o','o','x']]
+                # Act
+                move = Computer.maximum_move(game_state)
+                # Assert
+                expect(move).to eq(1)
+            end
+            it "returns 1" do
+                # Arrange
+                game_state = [['','x',''],['o','x','x'],['','o','']]
+                # Act
+                move = Computer.maximum_move(game_state)
+                # Assert
+                expect(move).to eq(1)
+            end
+        end
     end
 
     describe ".minimum_move" do
