@@ -44,7 +44,24 @@ context Computer do
     end
 
     describe ".minimum_move" do
-
+        context "one move away from player winning" do
+            it "returns -1 when given a winnable game" do
+                # Arrange
+                game_state = [['x','x',''],['o','o',''],['o','','']]
+                # Act
+                move = Computer.minimum_move(game_state)
+                # Assert
+                expect(move).to eq(-1)
+            end
+            it "returns -1 when given a winnable game" do
+                # Arrange
+                game_state = [['','','o'],['o','x',''],['o','','x']]
+                # Act
+                move = Computer.minimum_move(game_state)
+                # Assert
+                expect(move).to eq(-1)
+            end
+        end 
     end
 
     describe ".turn" do
