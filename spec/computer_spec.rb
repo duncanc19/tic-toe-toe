@@ -23,7 +23,24 @@ context Computer do
     end
 
     describe ".maximum_move" do
-        
+        context "one move away from winning" do
+            it "returns 1 when given a winnable game" do
+                # Arrange
+                game_state = [['o','o',''],['x','x',''],['x','','']]
+                # Act
+                move = Computer.maximum_move(game_state)
+                # Assert
+                expect(move).to eq(1)
+            end
+            it "returns 1 when given a winnable game" do
+                # Arrange
+                game_state = [['','','x'],['x','o',''],['x','','o']]
+                # Act
+                move = Computer.maximum_move(game_state)
+                # Assert
+                expect(move).to eq(1)
+            end
+        end 
     end
 
     describe ".minimum_move" do
