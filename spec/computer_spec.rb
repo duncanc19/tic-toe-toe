@@ -41,7 +41,7 @@ context Computer do
                 expect(move).to eq(1)
             end
         end
-        context "two moves away from winnning" do
+        context "two moves away from winning" do
             it "returns 1" do
                 # Arrange
                 game_state = [['x','',''],['x','',''],['o','o','x']]
@@ -80,6 +80,24 @@ context Computer do
                 expect(move).to eq(-1)
             end
         end 
+        context "two moves away from player winning" do
+            it "returns -1" do
+                # Arrange
+                game_state = [['o','',''],['o','',''],['x','x','o']]
+                # Act
+                move = Computer.minimum_move(game_state)
+                # Assert
+                expect(move).to eq(-1)
+            end
+            it "returns 1" do
+                # Arrange
+                game_state = [['','o',''],['x','o','o'],['','x','']]
+                # Act
+                move = Computer.minimum_move(game_state)
+                # Assert
+                expect(move).to eq(-1)
+            end
+        end
         context "one move away from drawing game" do
             it "returns 0 when given a drawable game" do
                 # Arrange
