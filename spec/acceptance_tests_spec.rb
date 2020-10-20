@@ -303,4 +303,17 @@ describe "tic tac toe game" do
             .to_stdout_from_any_process
         end
     end
+    # Given: A computer game is selected
+    # Then: A Game can be played and the computer wins
+    describe "A computer game is selected" do
+        it "the game can be played and the computer wins" do
+            # Arrange 
+            allow(@get_input).to receive(:gets).and_return("2","00", "22", "02")
+            expected_string = TEST_PLAYER2_WIN
+            # Assert (Act in {})
+            expect { @main.play_game(@present, @game, @verify, @get_input) }
+            .to output(a_string_including(expected_string))
+            .to_stdout_from_any_process
+        end
+    end
 end
