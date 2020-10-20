@@ -38,7 +38,7 @@ class Computer
                     temp_game.game_state = game_state.map(&:clone)
                     temp_game.add_move(row_index, col_index)
                     if CheckWin.check_win(temp_game)
-                        maximizer << 1 
+                        return 1 
                     elsif CheckDraw.check_draw(temp_game)
                         maximizer << 0 
                     else
@@ -60,7 +60,7 @@ class Computer
                     temp_game.game_state = game_state.map(&:clone)
                     temp_game.add_move(row_index, col_index)
                     if CheckWin.check_win(temp_game)
-                        minimizer << -1 
+                        return -1 
                     elsif CheckDraw.check_draw(temp_game)
                         minimizer << 0 
                     else
