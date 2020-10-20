@@ -11,7 +11,7 @@ class Computer
                     temp_game.current_player = 'o'
                     temp_game.game_state = game_state.map(&:clone)
                     temp_game.add_move(row_index, col_index)
-                    return [row_index,col_index] if CheckWin.check_win(temp_game)
+                    
                 end
             end
         end
@@ -34,7 +34,9 @@ class Computer
                     temp_game.current_player = 'o'
                     temp_game.game_state = game_state.map(&:clone)
                     temp_game.add_move(row_index, col_index)
-                    return [row_index ,col_index]  if minimum_move(game_state) == 1 
+                    if CheckWin.check_win(temp_game)
+                        return [row_index,col_index] 
+                    end
                 end
             end
         end

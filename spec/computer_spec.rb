@@ -1,13 +1,13 @@
 require_relative '../computer'
 
 context Computer do
-    describe ".winning_move" do
+    describe ".top_layer" do
         context "one move away from winning" do
             it "returns a winning move [0,2] given a winnable game" do
                 # Arrange
                 game_state = [['o','o',''],['x','x',''],['x','','']]
                 # Act
-                move = Computer.winning_move(game_state)
+                move = Computer.top_layer(game_state)
                 # Assert
                 expect(move).to eq([0,2])
             end
@@ -15,17 +15,9 @@ context Computer do
                 # Arrange
                 game_state = [['','','x'],['x','o',''],['x','','o']]
                 # Act
-                move = Computer.winning_move(game_state)
+                move = Computer.top_layer(game_state)
                 # Assert
                 expect(move).to eq([0,0])
-            end
-            it "returns false if no winning move" do
-                # Arrange
-                game_state = [['x','',''],['x','',''],['o','o','x']]
-                # Act
-                move = Computer.winning_move(game_state)
-                # Assert
-                expect(move).to eq(false)
             end
         end 
     end
@@ -44,7 +36,7 @@ context Computer do
                 # Arrange
                 game_state = [['x','',''],['x','',''],['o','o','x']]
                 # Act
-                move = Computer.turn(game_state)
+                move = Computer.top_layer(game_state)
                 # Assert
                 expect(move).to eq([1,1])
             end
@@ -52,7 +44,7 @@ context Computer do
                 # Arrange
                 game_state = [['','x',''],['o','x','x'],['','o','']]
                 # Act
-                move = Computer.turn(game_state)
+                move = Computer.top_layer(game_state)
                 # Assert
                 expect(move).to eq([2,0])
             end
