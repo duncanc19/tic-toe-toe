@@ -3,10 +3,6 @@ require_relative "check_win"
 
 class Computer
     def self.turn(game_state)
-        top_layer(game_state)
-    end
-
-    def self.top_layer(game_state)
         best_move = nil
         best_score = -1
 
