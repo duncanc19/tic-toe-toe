@@ -10,16 +10,17 @@ class Computer
                     temp_game.add_move(row_index, col_index)
                     if CheckWin.check_win(temp_game)
                         return [row_index,col_index] 
-                        # print  [row_index,col_index] 
+                        print  [row_index,col_index] 
                     else 
                         winning_hash[[row_index,col_index]] = minimum_move(temp_game.game_state)
-                        # print "top row: #{[row_index,col_index]}, score: #{winning_hash[[row_index,col_index]]}\n" 
+                        print "top row: #{[row_index,col_index]}, score: #{winning_hash[[row_index,col_index]]}\n" 
                     end
                 end
             end
         end
+        print "\n\n"
         winning_hash.max_by{|key,value| value}[0]
-        # print "#{winning_hash.max_by{|key,value| value}[0]} \n"
+        print "#{winning_hash.max_by{|key,value| value}[0]} \n"
         #  "WINNING MOVE: #{winning_hash.max()[0]}"
     end
 
@@ -34,18 +35,20 @@ class Computer
                     temp_game.add_move(row_index, col_index)
                     if CheckWin.check_win(temp_game)
                         maximizer << 1
-                        # print "maximize row: #{[row_index,col_index]}, score: #{1}\n"
+                        print "maximize row: #{[row_index,col_index]}, score: #{1}\n"
                     elsif CheckDraw.check_draw(temp_game)
                         maximizer << 0
-                        # print "maximize row: #{[row_index,col_index]}, score: #{0}\n" 
+                        print "maximize row: #{[row_index,col_index]}, score: #{0}\n" 
                     else
                         maximizer << minimum_move(temp_game.game_state)
-                        # print "maximize row: #{[row_index,col_index]}, score: #{minimum_move(temp_game.game_state)}\n" 
+                        print "maximize row: #{[row_index,col_index]}, score: #{minimum_move(temp_game.game_state)}\n" 
                     end
                 end
             end
         end
+        print "\n\n"
         return maximizer.max()
+        
     end
 
     def self.minimum_move(game_state)
@@ -59,17 +62,18 @@ class Computer
                     temp_game.add_move(row_index, col_index)
                     if CheckWin.check_win(temp_game)
                         minimizer << -1
-                        # print "minimize row: #{[row_index,col_index]}, score: #{-1}\n"
+                        print "minimize row: #{[row_index,col_index]}, score: #{-1}\n"
                     elsif CheckDraw.check_draw(temp_game)
                         minimizer << 0
-                        # print "minimize row: #{[row_index,col_index]}, score: #{0}\n"
+                        print "minimize row: #{[row_index,col_index]}, score: #{0}\n"
                     else
                         minimizer << maximum_move(temp_game.game_state)
-                        # print "minimize row: #{[row_index,col_index]}, score: #{maximum_move(temp_game.game_state)}\n"
+                        print "minimize row: #{[row_index,col_index]}, score: #{maximum_move(temp_game.game_state)}\n"
                     end
                 end
             end
         end
+        print "\n\n"
         return minimizer.min()
     end
 end
