@@ -19,14 +19,13 @@ class Computer
     end
     
     def self.turn(game_state)
-        if !winning_move(game_state)
-            minimum_move(game_state)
-        end
-        
+        top_layer(game_state)
     end
 
     def self.top_layer(game_state)
-        
+        best_move = nil
+        best_score = -1
+
         game_state.each_with_index do |row, row_index|
             row.each_with_index do |square, col_index| 
                 if square == ''
@@ -36,11 +35,17 @@ class Computer
                     temp_game.add_move(row_index, col_index)
                     if CheckWin.check_win(temp_game)
                         return [row_index,col_index]
+                    else 
+                        score = minimum_move(temp_game.game_state) 
+                        if score >= best_score
+                            best_move = [row_index,col_index]
+                            best_score = score
+                        end
                     end
                 end
             end
         end
-        false
+        best_move
     end
 
     def self.maximum_move(game_state)

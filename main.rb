@@ -20,7 +20,7 @@ class Main
 
             begin
                 if game_type == :computer_game && game.current_player == 'o'
-                    computer_turn(game.game_state)
+                    computer_turn(game)
                 else
                     turn(get_input, verify, game, present)
                 end
@@ -56,8 +56,8 @@ class Main
     end
 
 
-    def computer_turn(game_state)
-        move = Computer.turn(game_state)
+    def computer_turn(game)
+        move = Computer.turn(game.game_state)
         game.add_move(move[0], move[1])
     end
 
