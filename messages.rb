@@ -14,7 +14,7 @@ class Messages
         messages_hash[message_name]
     end
     def self.winning_message(player)
-        "🎉🥳🎉🥳🎉🥳 #{player} WINS! 🎉🥳🎉🥳🎉🥳"
+        "🎉#{player}🎉#{player}🎉#{player}     #{player} WINS!     🎉#{player}🎉#{player}🎉#{player}"
     end
     def self.player_turn_message(player) 
         "It's #{player}'s turn! "
