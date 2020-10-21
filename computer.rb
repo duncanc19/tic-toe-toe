@@ -9,10 +9,7 @@ class Computer
         game_state.each_with_index do |row, row_index|
             row.each_with_index do |square, col_index| 
                 if square == ''
-                    temp_game = Game.new
-                    temp_game.current_player = 'o'
-                    temp_game.game_state = game_state.map(&:clone)
-                    temp_game.add_move(row_index, col_index)
+                    temp_game = add_move_to_new_game(row_index, col_index, 'o', game_state)
                     if CheckWin.check_win(temp_game)
                         return [row_index,col_index]
                     else 
@@ -33,10 +30,7 @@ class Computer
         game_state.each_with_index do |row, row_index|
             row.each_with_index do |square, col_index| 
                 if square == ''
-                    temp_game = Game.new
-                    temp_game.current_player = 'o'
-                    temp_game.game_state = game_state.map(&:clone)
-                    temp_game.add_move(row_index, col_index)
+                    temp_game = add_move_to_new_game(row_index, col_index, 'o', game_state)
                     if CheckWin.check_win(temp_game)
                         return 1 
                     elsif CheckDraw.check_draw(temp_game)
@@ -55,10 +49,7 @@ class Computer
         game_state.each_with_index do |row, row_index|
             row.each_with_index do |square, col_index| 
                 if square == ''
-                    temp_game = Game.new
-                    temp_game.current_player = 'x'
-                    temp_game.game_state = game_state.map(&:clone)
-                    temp_game.add_move(row_index, col_index)
+                    temp_game = add_move_to_new_game(row_index, col_index, 'x', game_state)
                     if CheckWin.check_win(temp_game)
                         return -1 
                     elsif CheckDraw.check_draw(temp_game)
@@ -70,6 +61,14 @@ class Computer
             end
         end
         return minimizer.min()
+    end
+
+    def self.add_move_to_new_game(row_index, col_index, current_player, game_state)
+        temp_game = Game.new
+        temp_game.current_player = current_player
+        temp_game.game_state = game_state.map(&:clone)
+        temp_game.add_move(row_index, col_index)
+        temp_game
     end
 end
 
