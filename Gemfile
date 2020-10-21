@@ -9,3 +9,4 @@ ruby "2.5.0"
 # gem "rails"
 gem 'rspec'
 gem 'sinatra'
+gem 'rerun'
