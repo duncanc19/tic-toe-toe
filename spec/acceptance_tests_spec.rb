@@ -25,6 +25,18 @@ describe "tic tac toe game" do
             .to output(a_string_including(expected_string))
             .to_stdout_from_any_process 
         end
+
+        it "shows end game message user types 'Q'" do
+            # Arrange 
+            expected_string = TEST_GAME_ENDED
+            allow(@get_input).to receive(:gets).and_return("1", "Q")
+            # Act 
+            
+            # Assert (in {})
+            expect {@main.play_game(@present, @game, @verify, @get_input)}
+            .to output(a_string_including(expected_string))
+            .to_stdout_from_any_process 
+        end
     end
 
     # When: a new game starts
