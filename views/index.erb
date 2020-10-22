@@ -9,16 +9,16 @@
     <h1>¡Bienvenidos a Tic Tac Toe!</h1>
     <h3>¡El juego fantastico!</h3>
     </br>
-    <form>
-        <input type="text" id="box00" name="box00">
-        <input type="text" id="box01" name="box01">
-        <input type="text" id="box02" name="box02"></br>
-        <input type="text" id="box10" name="box10">
-        <input type="text" id="box11" name="box11">
-        <input type="text" id="box12" name="box12"></br>
-        <input type="text" id="box20" name="box20">
-        <input type="text" id="box21" name="box21">
-        <input type="text" id="box22" name="box22"></br></br>
+    <form method="POST" action="/move">
+        <input type="text" id="box00" name="box00" value= <%= @grid_array[0][0]%> >
+        <input type="text" id="box01" name="box01" value= <%= @grid_array[0][1]%> >
+        <input type="text" id="box02" name="box02" value= <%= @grid_array[0][2]%> ></br>
+        <input type="text" id="box10" name="box10" value= <%= @grid_array[1][0]%> >
+        <input type="text" id="box11" name="box11" value= <%= @grid_array[1][1]%> >
+        <input type="text" id="box12" name="box12" value= <%= @grid_array[1][2]%> ></br>
+        <input type="text" id="box20" name="box20" value= <%= @grid_array[2][0]%> >
+        <input type="text" id="box21" name="box21" value= <%= @grid_array[2][1]%> >
+        <input type="text" id="box22" name="box22" value= <%= @grid_array[2][2]%> ></br></br>
 
         <input type="submit" value="Enter move">
     </form>
