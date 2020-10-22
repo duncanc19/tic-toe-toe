@@ -1,4 +1,4 @@
-require_relative "../check_draw"
+require_relative "../lib/check_draw"
 
 context CheckDraw do
   describe "given an empty board" do

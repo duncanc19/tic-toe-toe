@@ -1,8 +1,8 @@
 require_relative "constants_test"
-require_relative "../game"
-require_relative "../present"
-require_relative "../main"
-require_relative "../computer"
+require_relative "../lib/game"
+require_relative "../lib/present"
+require_relative "../lib/main"
+require_relative "../lib/computer"
 
 describe "tic tac toe game" do 
     before(:each) do

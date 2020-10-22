@@ -1,4 +1,4 @@
-Dir["*.rb"].each {|file| require_relative file if file != "tic_tac_toe.rb" }
+Dir["lib/*.rb"].each {|file| require_relative file if file != "tic_tac_toe.rb" }
 
 main = Main.new
 present = Present.new

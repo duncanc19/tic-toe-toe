@@ -1,4 +1,4 @@
-require_relative "../check_win"
+require_relative "../lib/check_win"
 
 context CheckWin do
   describe "given an unfinished game" do
