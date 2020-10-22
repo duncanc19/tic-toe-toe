@@ -1,7 +1,5 @@
 # 🎃👻🎃    Scary TicTacToe Game Kata   👻🎃👻
 
-Basic Ruby project directory with bundle and RSpec. Suitable for solving katas using TDD.
-
 Ruby project to practice TDD, ATDD and Solid principles. Based on trying to solve the kata [here](https://learn.madetech.com/sparring/tic-tac-toe/)
 
 ## Setup
