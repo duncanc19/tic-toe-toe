@@ -1,4 +1,4 @@
-# TicTacToe Game Kata
+# 🎃👻🎃    Scary TicTacToe Game Kata   👻🎃👻
 
 Basic Ruby project directory with bundle and RSpec. Suitable for solving katas using TDD.
 
