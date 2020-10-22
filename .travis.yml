@@ -6,4 +6,5 @@ before_install:
   - bundler --version
 script: bundle exec rspec
 deploy:
+  provider: heroku
   app: /calm-falls-27969
