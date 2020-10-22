@@ -17,13 +17,15 @@ Ruby project to practice TDD, ATDD and Solid principles. Based on trying to solv
 ## Play Command Line Interface: 
 
 To play using the command line interface:
+
     `ruby tic_tac_toe.rb`
 
 ## Play using (unfinished) Web interface:
 
 a.  See the heroku app [here](https://calm-falls-27969.herokuapp.com)
 
-b.  run the server locally:
+b.  Run the server locally:
+
     `ruby tic_tac_toe_web.rb`
 
 
