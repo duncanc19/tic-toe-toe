@@ -8,4 +8,3 @@ script: bundle exec rspec
 deploy:
   provider: heroku
   app: /calm-falls-27969
-  api-key: aaf93b27-e1f3-4fba-903e-be04aa2ba38b
