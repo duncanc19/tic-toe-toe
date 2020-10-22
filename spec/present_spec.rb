@@ -1,4 +1,4 @@
-require_relative "../present"
+require_relative "../lib/present"
 require_relative "constants_test"
 
 context Present do

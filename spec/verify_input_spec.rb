@@ -1,4 +1,4 @@
-require_relative "../verify_input"
+require_relative "../lib/verify_input"
 
 context VerifyAndConvertInput do
     describe "#correct_format?" do

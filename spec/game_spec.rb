@@ -1,4 +1,4 @@
-require_relative "../game"
+require_relative "../lib/game"
 
 context Game do
     describe "When a game is initialized" do

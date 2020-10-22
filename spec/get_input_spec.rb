@@ -1,4 +1,4 @@
-require_relative "../get_input"
+require_relative "../lib/get_input"
 
 context GetInput do
   describe "#get_move" do

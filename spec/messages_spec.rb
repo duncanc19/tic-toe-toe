@@ -1,4 +1,4 @@
-require_relative '../messages'
+require_relative '../lib/messages'
 require_relative 'constants_test'
 
 context Messages do

@@ -1,4 +1,4 @@
-require_relative '../computer'
+require_relative '../lib/computer'
 
 context Computer do
     describe ".maximum_move" do
